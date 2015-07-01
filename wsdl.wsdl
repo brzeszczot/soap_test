@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://services.barnesandnoble.com/IVR/v01_01/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://services.barnesandnoble.com/IVR/v01_01/" xmlns="http://schemas.xmlsoap.org/wsdl/"><types><s:schema elementFormDefault="qualified" targetNamespace="http://services.barnesandnoble.com/IVR/v01_01/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://services.barnesandnoble.com/IVR/v01_01/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+			<s:element name="GetOrderDetails">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="OrderNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="ZipCode" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetOrderDetailsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="GetOrderDetailsResult" type="tns:OrderDetails"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="OrderDetails">
+				<s:sequence>
+					<s:element maxOccurs="1" minOccurs="0" name="OrderNumber" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="ZipCode" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="1" name="ResultCode" type="s:int"/>
+					<s:element maxOccurs="1" minOccurs="0" name="ResultMessage" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="FulfillmentId" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="BillingName" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="ShippingName" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="Channel" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="1" name="UgcPayment" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="CcPayment" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="PpPayment" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="PoPayment" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="UgcSettledTotal" type="s:double"/>
+					<s:element maxOccurs="1" minOccurs="1" name="CcSettledTotal" type="s:double"/>
+					<s:element maxOccurs="1" minOccurs="1" name="PpSettledTotal" type="s:double"/>
+					<s:element maxOccurs="1" minOccurs="0" name="CcType" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="LastFourCcDigits" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="OrderComposition" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="1" name="OrderAmount" type="s:double"/>
+					<s:element maxOccurs="1" minOccurs="1" name="OrderBalance" type="s:double"/>
+					<s:element maxOccurs="1" minOccurs="1" name="PaidByUgc" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="CanCancel" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="CanUpdateShippingServiceLevel" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="CanAddUgc" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="CanAddCc" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="CanAcceptShipDelay" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="HoldToComplete" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="CanUpdateShippingPreference" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="0" name="OrderStatus" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="HoldPendingReason" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="ExpectedLastShipmentServiceLevelCode" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="1" name="PartiallyShipped" type="s:boolean"/>
+					<s:element maxOccurs="1" minOccurs="1" name="MostRecentCancelDate" type="s:dateTime"/>
+					<s:element maxOccurs="1" minOccurs="1" name="MostRecentCancelItemsCount" type="s:int"/>
+					<s:element maxOccurs="1" minOccurs="1" name="MostRecentShipmentDate" type="s:dateTime"/>
+					<s:element maxOccurs="1" minOccurs="1" name="MostRecentShipmentItemCount" type="s:int"/>
+					<s:element maxOccurs="1" minOccurs="0" name="MostRecentShipmentCarrierMethod" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="MostRecentShipmentTrackingNumber" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="1" name="UnshippedItemCount" type="s:int"/>
+					<s:element maxOccurs="1" minOccurs="1" name="NextShipmentPromisedDate" type="s:dateTime"/>
+					<s:element maxOccurs="1" minOccurs="0" name="NextShipmentExpectedShippingServiceLevelCode" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="1" name="NextShipmentItemCount" type="s:int"/>
+					<s:element maxOccurs="1" minOccurs="0" name="AvailableShippingUpgrades" type="tns:ArrayOfShippingMethod"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ArrayOfShippingMethod">
+				<s:sequence>
+					<s:element maxOccurs="unbounded" minOccurs="0" name="ShippingMethod" nillable="true" type="tns:ShippingMethod"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ShippingMethod">
+				<s:sequence>
+					<s:element maxOccurs="1" minOccurs="0" name="CarrierShipMethodId" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="ServiceLevelCode" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="RelativeRank" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:element name="CancelOrder">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="OrderNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="FulfillmentId" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="CancelOrderResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="1" name="CancelOrderResult" type="s:int"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddUgc_First">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="OrderNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="FulfillmentId" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="UgcNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="Pin" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddUgc_FirstResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="AddUgc_FirstResult" type="tns:AddUgcStatus"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="AddUgcStatus">
+				<s:sequence>
+					<s:element maxOccurs="1" minOccurs="1" name="UgcBalance" type="s:double"/>
+					<s:element maxOccurs="1" minOccurs="1" name="ResultCode" type="s:int"/>
+					<s:element maxOccurs="1" minOccurs="0" name="ResultMessage" type="s:string"/>
+					<s:element maxOccurs="1" minOccurs="0" name="SessionId" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:element name="AddUgc_Next">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="OrderNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="FulfillmentId" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="UgcNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="Pin" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="SessionId" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddUgc_NextResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="AddUgc_NextResult" type="tns:AddUgcStatus"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddUgc_FinalCc">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="OrderNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="FulfillmentId" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="CcNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="1" name="ExpirationDate" type="s:dateTime"/>
+						<s:element maxOccurs="1" minOccurs="0" name="SessionId" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddUgc_FinalCcResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="AddUgc_FinalCcResult" type="tns:AddUgcStatus"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddCc">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="OrderNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="FulfillmentId" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="CcNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="1" name="ExpirationDate" type="s:dateTime"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddCcResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="1" name="AddCcResult" type="s:int"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UpdateShippingMethod">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="OrderNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="FulfillmentId" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="ShippingMethodId" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="ServiceLevelCode" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UpdateShippingMethodResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="1" name="UpdateShippingMethodResult" type="s:int"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UpdateShippingPreference">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="0" name="OrderNumber" type="s:string"/>
+						<s:element maxOccurs="1" minOccurs="0" name="FulfillmentId" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UpdateShippingPreferenceResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="1" name="UpdateShippingPreferenceResult" type="s:int"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+		</s:schema></types><message name="AddCcIn"><part name="parameters" element="tns:AddCc"/></message><message name="AddCcOut"><part name="parameters" element="tns:AddCcResponse"/></message><message name="AddUgc_FinalCcIn"><part name="parameters" element="tns:AddUgc_FinalCc"/></message><message name="AddUgc_FinalCcOut"><part name="parameters" element="tns:AddUgc_FinalCcResponse"/></message><message name="AddUgc_FirstIn"><part name="parameters" element="tns:AddUgc_First"/></message><message name="AddUgc_FirstOut"><part name="parameters" element="tns:AddUgc_FirstResponse"/></message><message name="AddUgc_NextIn"><part name="parameters" element="tns:AddUgc_Next"/></message><message name="AddUgc_NextOut"><part name="parameters" element="tns:AddUgc_NextResponse"/></message><message name="CancelOrderIn"><part name="parameters" element="tns:CancelOrder"/></message><message name="CancelOrderOut"><part name="parameters" element="tns:CancelOrderResponse"/></message><message name="GetOrderDetailsIn"><part name="parameters" element="tns:GetOrderDetails"/></message><message name="GetOrderDetailsOut"><part name="parameters" element="tns:GetOrderDetailsResponse"/></message><message name="UpdateShippingMethodIn"><part name="parameters" element="tns:UpdateShippingMethod"/></message><message name="UpdateShippingMethodOut"><part name="parameters" element="tns:UpdateShippingMethodResponse"/></message><message name="UpdateShippingPreferenceIn"><part name="parameters" element="tns:UpdateShippingPreference"/></message><message name="UpdateShippingPreferenceOut"><part name="parameters" element="tns:UpdateShippingPreferenceResponse"/></message><portType name="IVRService_v01_01"><operation name="AddCc"><input message="tns:AddCcIn"/><output message="tns:AddCcOut"/></operation><operation name="AddUgc_FinalCc"><input message="tns:AddUgc_FinalCcIn"/><output message="tns:AddUgc_FinalCcOut"/></operation><operation name="AddUgc_First"><input message="tns:AddUgc_FirstIn"/><output message="tns:AddUgc_FirstOut"/></operation><operation name="AddUgc_Next"><input message="tns:AddUgc_NextIn"/><output message="tns:AddUgc_NextOut"/></operation><operation name="CancelOrder"><input message="tns:CancelOrderIn"/><output message="tns:CancelOrderOut"/></operation><operation name="GetOrderDetails"><input message="tns:GetOrderDetailsIn"/><output message="tns:GetOrderDetailsOut"/></operation><operation name="UpdateShippingMethod"><input message="tns:UpdateShippingMethodIn"/><output message="tns:UpdateShippingMethodOut"/></operation><operation name="UpdateShippingPreference"><input message="tns:UpdateShippingPreferenceIn"/><output message="tns:UpdateShippingPreferenceOut"/></operation></portType><binding name="IVRService_v01_01" type="tns:IVRService_v01_01"><soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/><operation name="AddCc"><soap:operation soapAction="http://services.barnesandnoble.com/IVR/v01_01/AddCc" style="document"/><input><soap:body use="literal" parts="parameters"/></input><output><soap:body use="literal" parts="parameters"/></output></operation><operation name="AddUgc_FinalCc"><soap:operation soapAction="http://services.barnesandnoble.com/IVR/v01_01/AddUgc_FinalCc" style="document"/><input><soap:body use="literal" parts="parameters"/></input><output><soap:body use="literal" parts="parameters"/></output></operation><operation name="AddUgc_First"><soap:operation soapAction="http://services.barnesandnoble.com/IVR/v01_01/AddUgc_First" style="document"/><input><soap:body use="literal" parts="parameters"/></input><output><soap:body use="literal" parts="parameters"/></output></operation><operation name="AddUgc_Next"><soap:operation soapAction="http://services.barnesandnoble.com/IVR/v01_01/AddUgc_Next" style="document"/><input><soap:body use="literal" parts="parameters"/></input><output><soap:body use="literal" parts="parameters"/></output></operation><operation name="CancelOrder"><soap:operation soapAction="http://services.barnesandnoble.com/IVR/v01_01/CancelOrder" style="document"/><input><soap:body use="literal" parts="parameters"/></input><output><soap:body use="literal" parts="parameters"/></output></operation><operation name="GetOrderDetails"><soap:operation soapAction="http://services.barnesandnoble.com/IVR/v01_01/GetOrderDetails" style="document"/><input><soap:body use="literal" parts="parameters"/></input><output><soap:body use="literal" parts="parameters"/></output></operation><operation name="UpdateShippingMethod"><soap:operation soapAction="http://services.barnesandnoble.com/IVR/v01_01/UpdateShippingMethod" style="document"/><input><soap:body use="literal" parts="parameters"/></input><output><soap:body use="literal" parts="parameters"/></output></operation><operation name="UpdateShippingPreference"><soap:operation soapAction="http://services.barnesandnoble.com/IVR/v01_01/UpdateShippingPreference" style="document"/><input><soap:body use="literal" parts="parameters"/></input><output><soap:body use="literal" parts="parameters"/></output></operation></binding><service name="IVRService_v01_01"><port name="IVRService_v01_01" binding="tns:IVRService_v01_01"><soap:address location="https://services.barnesandnoble.com:443/IVR/v01_01/"/></port></service></definitions>
