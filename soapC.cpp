@@ -15,7 +15,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC.cpp ver 2.8.23 2015-10-30 14:54:04 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC.cpp ver 2.8.23 2015-11-06 13:32:36 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -192,48 +192,28 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_byte(soap, NULL, NULL, "xsd:byte");
 	case SOAP_TYPE_int:
 		return soap_in_int(soap, NULL, NULL, "xsd:int");
-	case SOAP_TYPE_bool:
-		return soap_in_bool(soap, NULL, NULL, "xsd:boolean");
 	case SOAP_TYPE_std__string:
 		return soap_in_std__string(soap, NULL, NULL, "xsd:string");
-	case SOAP_TYPE_arrayOfInt:
-		return soap_in_arrayOfInt(soap, NULL, NULL, "xsd:int");
-	case SOAP_TYPE_ComplexTypeDemoArray:
-		return soap_in_ComplexTypeDemoArray(soap, NULL, NULL, "ns1:ComplexTypeDemo");
 	case SOAP_TYPE_stringArray:
 		return soap_in_stringArray(soap, NULL, NULL, "xsd:string");
-	case SOAP_TYPE_ns1__ComplexTypeDemo:
-		return soap_in_ns1__ComplexTypeDemo(soap, NULL, NULL, "ns1:ComplexTypeDemo");
-	case SOAP_TYPE_ns1__DemoMethod:
-		return soap_in_ns1__DemoMethod(soap, NULL, NULL, "ns1:DemoMethod");
-	case SOAP_TYPE_ns1__DemoMethodResponse:
-		return soap_in_ns1__DemoMethodResponse(soap, NULL, NULL, "ns1:DemoMethodResponse");
-	case SOAP_TYPE_ns1__SayHello:
-		return soap_in_ns1__SayHello(soap, NULL, NULL, "ns1:SayHello");
-	case SOAP_TYPE_ns1__SayHelloResponse:
-		return soap_in_ns1__SayHelloResponse(soap, NULL, NULL, "ns1:SayHelloResponse");
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemo:
-		return soap_in_ns1__ComplexTypeArrayDemo(soap, NULL, NULL, "ns1:ComplexTypeArrayDemo");
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse:
-		return soap_in_ns1__ComplexTypeArrayDemoResponse(soap, NULL, NULL, "ns1:ComplexTypeArrayDemoResponse");
-	case SOAP_TYPE_ns1__PrintComplexType:
-		return soap_in_ns1__PrintComplexType(soap, NULL, NULL, "ns1:PrintComplexType");
-	case SOAP_TYPE_ns1__PrintComplexTypeResponse:
-		return soap_in_ns1__PrintComplexTypeResponse(soap, NULL, NULL, "ns1:PrintComplexTypeResponse");
-	case SOAP_TYPE_ns1__GetComplexType:
-		return soap_in_ns1__GetComplexType(soap, NULL, NULL, "ns1:GetComplexType");
-	case SOAP_TYPE_ns1__GetComplexTypeResponse:
-		return soap_in_ns1__GetComplexTypeResponse(soap, NULL, NULL, "ns1:GetComplexTypeResponse");
-	case SOAP_TYPE_PointerToComplexTypeDemoArray:
-		return soap_in_PointerToComplexTypeDemoArray(soap, NULL, NULL, "ns1:ComplexTypeDemo");
+	case SOAP_TYPE_ns1__PlayWord:
+		return soap_in_ns1__PlayWord(soap, NULL, NULL, "ns1:PlayWord");
+	case SOAP_TYPE_ns1__PlayWordResponse:
+		return soap_in_ns1__PlayWordResponse(soap, NULL, NULL, "ns1:PlayWordResponse");
+	case SOAP_TYPE_ns1__GetWord:
+		return soap_in_ns1__GetWord(soap, NULL, NULL, "ns1:GetWord");
+	case SOAP_TYPE_ns1__GetWordResponse:
+		return soap_in_ns1__GetWordResponse(soap, NULL, NULL, "ns1:GetWordResponse");
+	case SOAP_TYPE_ns1__SendWord:
+		return soap_in_ns1__SendWord(soap, NULL, NULL, "ns1:SendWord");
+	case SOAP_TYPE_ns1__SendWordResponse:
+		return soap_in_ns1__SendWordResponse(soap, NULL, NULL, "ns1:SendWordResponse");
+	case SOAP_TYPE_ns1__AccountAuth:
+		return soap_in_ns1__AccountAuth(soap, NULL, NULL, "ns1:AccountAuth");
+	case SOAP_TYPE_ns1__AccountAuthResponse:
+		return soap_in_ns1__AccountAuthResponse(soap, NULL, NULL, "ns1:AccountAuthResponse");
 	case SOAP_TYPE_PointerTostringArray:
 		return soap_in_PointerTostringArray(soap, NULL, NULL, "xsd:string");
-	case SOAP_TYPE_PointerToint:
-		return soap_in_PointerToint(soap, NULL, NULL, "xsd:int");
-	case SOAP_TYPE_PointerToPointerTons1__ComplexTypeDemo:
-		return soap_in_PointerToPointerTons1__ComplexTypeDemo(soap, NULL, NULL, "ns1:ComplexTypeDemo");
-	case SOAP_TYPE_PointerTons1__ComplexTypeDemo:
-		return soap_in_PointerTons1__ComplexTypeDemo(soap, NULL, NULL, "ns1:ComplexTypeDemo");
 	case SOAP_TYPE_PointerTostd__string:
 		return soap_in_PointerTostd__string(soap, NULL, NULL, "xsd:string");
 	case SOAP_TYPE__QName:
@@ -257,21 +237,9 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		{	*type = SOAP_TYPE_std__string;
 			return soap_in_std__string(soap, NULL, NULL, NULL);
 		}
-		if (*soap->arrayType && !soap_match_array(soap, "xsd:int"))
-		{	*type = SOAP_TYPE_arrayOfInt;
-			return soap_in_arrayOfInt(soap, NULL, NULL, NULL);
-		}
-		if (*soap->arrayType && !soap_match_array(soap, "ns1:ComplexTypeDemo"))
-		{	*type = SOAP_TYPE_ComplexTypeDemoArray;
-			return soap_in_ComplexTypeDemoArray(soap, NULL, NULL, NULL);
-		}
 		if (*soap->arrayType && !soap_match_array(soap, "xsd:string"))
 		{	*type = SOAP_TYPE_stringArray;
 			return soap_in_stringArray(soap, NULL, NULL, NULL);
-		}
-		if (!soap_match_tag(soap, t, "ns1:ComplexTypeDemo"))
-		{	*type = SOAP_TYPE_ns1__ComplexTypeDemo;
-			return soap_in_ns1__ComplexTypeDemo(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:byte"))
 		{	*type = SOAP_TYPE_byte;
@@ -281,49 +249,37 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		{	*type = SOAP_TYPE_int;
 			return soap_in_int(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "xsd:boolean"))
-		{	*type = SOAP_TYPE_bool;
-			return soap_in_bool(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns1:PlayWord"))
+		{	*type = SOAP_TYPE_ns1__PlayWord;
+			return soap_in_ns1__PlayWord(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns1:DemoMethod"))
-		{	*type = SOAP_TYPE_ns1__DemoMethod;
-			return soap_in_ns1__DemoMethod(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns1:PlayWordResponse"))
+		{	*type = SOAP_TYPE_ns1__PlayWordResponse;
+			return soap_in_ns1__PlayWordResponse(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns1:DemoMethodResponse"))
-		{	*type = SOAP_TYPE_ns1__DemoMethodResponse;
-			return soap_in_ns1__DemoMethodResponse(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns1:GetWord"))
+		{	*type = SOAP_TYPE_ns1__GetWord;
+			return soap_in_ns1__GetWord(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns1:SayHello"))
-		{	*type = SOAP_TYPE_ns1__SayHello;
-			return soap_in_ns1__SayHello(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns1:GetWordResponse"))
+		{	*type = SOAP_TYPE_ns1__GetWordResponse;
+			return soap_in_ns1__GetWordResponse(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns1:SayHelloResponse"))
-		{	*type = SOAP_TYPE_ns1__SayHelloResponse;
-			return soap_in_ns1__SayHelloResponse(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns1:SendWord"))
+		{	*type = SOAP_TYPE_ns1__SendWord;
+			return soap_in_ns1__SendWord(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns1:ComplexTypeArrayDemo"))
-		{	*type = SOAP_TYPE_ns1__ComplexTypeArrayDemo;
-			return soap_in_ns1__ComplexTypeArrayDemo(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns1:SendWordResponse"))
+		{	*type = SOAP_TYPE_ns1__SendWordResponse;
+			return soap_in_ns1__SendWordResponse(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns1:ComplexTypeArrayDemoResponse"))
-		{	*type = SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse;
-			return soap_in_ns1__ComplexTypeArrayDemoResponse(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns1:AccountAuth"))
+		{	*type = SOAP_TYPE_ns1__AccountAuth;
+			return soap_in_ns1__AccountAuth(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns1:PrintComplexType"))
-		{	*type = SOAP_TYPE_ns1__PrintComplexType;
-			return soap_in_ns1__PrintComplexType(soap, NULL, NULL, NULL);
-		}
-		if (!soap_match_tag(soap, t, "ns1:PrintComplexTypeResponse"))
-		{	*type = SOAP_TYPE_ns1__PrintComplexTypeResponse;
-			return soap_in_ns1__PrintComplexTypeResponse(soap, NULL, NULL, NULL);
-		}
-		if (!soap_match_tag(soap, t, "ns1:GetComplexType"))
-		{	*type = SOAP_TYPE_ns1__GetComplexType;
-			return soap_in_ns1__GetComplexType(soap, NULL, NULL, NULL);
-		}
-		if (!soap_match_tag(soap, t, "ns1:GetComplexTypeResponse"))
-		{	*type = SOAP_TYPE_ns1__GetComplexTypeResponse;
-			return soap_in_ns1__GetComplexTypeResponse(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns1:AccountAuthResponse"))
+		{	*type = SOAP_TYPE_ns1__AccountAuthResponse;
+			return soap_in_ns1__AccountAuthResponse(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:QName"))
 		{	char **s;
@@ -406,48 +362,28 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_byte(soap, tag, id, (const char *)ptr, "xsd:byte");
 	case SOAP_TYPE_int:
 		return soap_out_int(soap, tag, id, (const int *)ptr, "xsd:int");
-	case SOAP_TYPE_bool:
-		return soap_out_bool(soap, tag, id, (const bool *)ptr, "xsd:boolean");
 	case SOAP_TYPE_std__string:
 		return soap_out_std__string(soap, tag, id, (const std::string *)ptr, "xsd:string");
-	case SOAP_TYPE_arrayOfInt:
-		return ((arrayOfInt *)ptr)->soap_out(soap, tag, id, "xsd:int");
-	case SOAP_TYPE_ComplexTypeDemoArray:
-		return ((ComplexTypeDemoArray *)ptr)->soap_out(soap, tag, id, "ns1:ComplexTypeDemo");
 	case SOAP_TYPE_stringArray:
 		return ((stringArray *)ptr)->soap_out(soap, tag, id, "xsd:string");
-	case SOAP_TYPE_ns1__ComplexTypeDemo:
-		return ((ns1__ComplexTypeDemo *)ptr)->soap_out(soap, tag, id, "ns1:ComplexTypeDemo");
-	case SOAP_TYPE_ns1__DemoMethod:
-		return soap_out_ns1__DemoMethod(soap, tag, id, (const struct ns1__DemoMethod *)ptr, "ns1:DemoMethod");
-	case SOAP_TYPE_ns1__DemoMethodResponse:
-		return soap_out_ns1__DemoMethodResponse(soap, tag, id, (const struct ns1__DemoMethodResponse *)ptr, "ns1:DemoMethodResponse");
-	case SOAP_TYPE_ns1__SayHello:
-		return soap_out_ns1__SayHello(soap, tag, id, (const struct ns1__SayHello *)ptr, "ns1:SayHello");
-	case SOAP_TYPE_ns1__SayHelloResponse:
-		return soap_out_ns1__SayHelloResponse(soap, tag, id, (const struct ns1__SayHelloResponse *)ptr, "ns1:SayHelloResponse");
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemo:
-		return soap_out_ns1__ComplexTypeArrayDemo(soap, tag, id, (const struct ns1__ComplexTypeArrayDemo *)ptr, "ns1:ComplexTypeArrayDemo");
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse:
-		return soap_out_ns1__ComplexTypeArrayDemoResponse(soap, tag, id, (const struct ns1__ComplexTypeArrayDemoResponse *)ptr, "ns1:ComplexTypeArrayDemoResponse");
-	case SOAP_TYPE_ns1__PrintComplexType:
-		return soap_out_ns1__PrintComplexType(soap, tag, id, (const struct ns1__PrintComplexType *)ptr, "ns1:PrintComplexType");
-	case SOAP_TYPE_ns1__PrintComplexTypeResponse:
-		return soap_out_ns1__PrintComplexTypeResponse(soap, tag, id, (const struct ns1__PrintComplexTypeResponse *)ptr, "ns1:PrintComplexTypeResponse");
-	case SOAP_TYPE_ns1__GetComplexType:
-		return soap_out_ns1__GetComplexType(soap, tag, id, (const struct ns1__GetComplexType *)ptr, "ns1:GetComplexType");
-	case SOAP_TYPE_ns1__GetComplexTypeResponse:
-		return soap_out_ns1__GetComplexTypeResponse(soap, tag, id, (const struct ns1__GetComplexTypeResponse *)ptr, "ns1:GetComplexTypeResponse");
-	case SOAP_TYPE_PointerToComplexTypeDemoArray:
-		return soap_out_PointerToComplexTypeDemoArray(soap, tag, id, (ComplexTypeDemoArray *const*)ptr, "ns1:ComplexTypeDemo");
+	case SOAP_TYPE_ns1__PlayWord:
+		return soap_out_ns1__PlayWord(soap, tag, id, (const struct ns1__PlayWord *)ptr, "ns1:PlayWord");
+	case SOAP_TYPE_ns1__PlayWordResponse:
+		return soap_out_ns1__PlayWordResponse(soap, tag, id, (const struct ns1__PlayWordResponse *)ptr, "ns1:PlayWordResponse");
+	case SOAP_TYPE_ns1__GetWord:
+		return soap_out_ns1__GetWord(soap, tag, id, (const struct ns1__GetWord *)ptr, "ns1:GetWord");
+	case SOAP_TYPE_ns1__GetWordResponse:
+		return soap_out_ns1__GetWordResponse(soap, tag, id, (const struct ns1__GetWordResponse *)ptr, "ns1:GetWordResponse");
+	case SOAP_TYPE_ns1__SendWord:
+		return soap_out_ns1__SendWord(soap, tag, id, (const struct ns1__SendWord *)ptr, "ns1:SendWord");
+	case SOAP_TYPE_ns1__SendWordResponse:
+		return soap_out_ns1__SendWordResponse(soap, tag, id, (const struct ns1__SendWordResponse *)ptr, "ns1:SendWordResponse");
+	case SOAP_TYPE_ns1__AccountAuth:
+		return soap_out_ns1__AccountAuth(soap, tag, id, (const struct ns1__AccountAuth *)ptr, "ns1:AccountAuth");
+	case SOAP_TYPE_ns1__AccountAuthResponse:
+		return soap_out_ns1__AccountAuthResponse(soap, tag, id, (const struct ns1__AccountAuthResponse *)ptr, "ns1:AccountAuthResponse");
 	case SOAP_TYPE_PointerTostringArray:
 		return soap_out_PointerTostringArray(soap, tag, id, (stringArray *const*)ptr, "xsd:string");
-	case SOAP_TYPE_PointerToint:
-		return soap_out_PointerToint(soap, tag, id, (int *const*)ptr, "xsd:int");
-	case SOAP_TYPE_PointerToPointerTons1__ComplexTypeDemo:
-		return soap_out_PointerToPointerTons1__ComplexTypeDemo(soap, tag, id, (ns1__ComplexTypeDemo **const*)ptr, "ns1:ComplexTypeDemo");
-	case SOAP_TYPE_PointerTons1__ComplexTypeDemo:
-		return soap_out_PointerTons1__ComplexTypeDemo(soap, tag, id, (ns1__ComplexTypeDemo *const*)ptr, "ns1:ComplexTypeDemo");
 	case SOAP_TYPE_PointerTostd__string:
 		return soap_out_PointerTostd__string(soap, tag, id, (std::string *const*)ptr, "xsd:string");
 	case SOAP_TYPE__QName:
@@ -475,62 +411,35 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_std__string:
 		soap_serialize_std__string(soap, (const std::string *)ptr);
 		break;
-	case SOAP_TYPE_arrayOfInt:
-		((arrayOfInt *)ptr)->soap_serialize(soap);
-		break;
-	case SOAP_TYPE_ComplexTypeDemoArray:
-		((ComplexTypeDemoArray *)ptr)->soap_serialize(soap);
-		break;
 	case SOAP_TYPE_stringArray:
 		((stringArray *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_ns1__ComplexTypeDemo:
-		((ns1__ComplexTypeDemo *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_ns1__PlayWord:
+		soap_serialize_ns1__PlayWord(soap, (const struct ns1__PlayWord *)ptr);
 		break;
-	case SOAP_TYPE_ns1__DemoMethod:
-		soap_serialize_ns1__DemoMethod(soap, (const struct ns1__DemoMethod *)ptr);
+	case SOAP_TYPE_ns1__PlayWordResponse:
+		soap_serialize_ns1__PlayWordResponse(soap, (const struct ns1__PlayWordResponse *)ptr);
 		break;
-	case SOAP_TYPE_ns1__DemoMethodResponse:
-		soap_serialize_ns1__DemoMethodResponse(soap, (const struct ns1__DemoMethodResponse *)ptr);
+	case SOAP_TYPE_ns1__GetWord:
+		soap_serialize_ns1__GetWord(soap, (const struct ns1__GetWord *)ptr);
 		break;
-	case SOAP_TYPE_ns1__SayHello:
-		soap_serialize_ns1__SayHello(soap, (const struct ns1__SayHello *)ptr);
+	case SOAP_TYPE_ns1__GetWordResponse:
+		soap_serialize_ns1__GetWordResponse(soap, (const struct ns1__GetWordResponse *)ptr);
 		break;
-	case SOAP_TYPE_ns1__SayHelloResponse:
-		soap_serialize_ns1__SayHelloResponse(soap, (const struct ns1__SayHelloResponse *)ptr);
+	case SOAP_TYPE_ns1__SendWord:
+		soap_serialize_ns1__SendWord(soap, (const struct ns1__SendWord *)ptr);
 		break;
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemo:
-		soap_serialize_ns1__ComplexTypeArrayDemo(soap, (const struct ns1__ComplexTypeArrayDemo *)ptr);
+	case SOAP_TYPE_ns1__SendWordResponse:
+		soap_serialize_ns1__SendWordResponse(soap, (const struct ns1__SendWordResponse *)ptr);
 		break;
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse:
-		soap_serialize_ns1__ComplexTypeArrayDemoResponse(soap, (const struct ns1__ComplexTypeArrayDemoResponse *)ptr);
+	case SOAP_TYPE_ns1__AccountAuth:
+		soap_serialize_ns1__AccountAuth(soap, (const struct ns1__AccountAuth *)ptr);
 		break;
-	case SOAP_TYPE_ns1__PrintComplexType:
-		soap_serialize_ns1__PrintComplexType(soap, (const struct ns1__PrintComplexType *)ptr);
-		break;
-	case SOAP_TYPE_ns1__PrintComplexTypeResponse:
-		soap_serialize_ns1__PrintComplexTypeResponse(soap, (const struct ns1__PrintComplexTypeResponse *)ptr);
-		break;
-	case SOAP_TYPE_ns1__GetComplexType:
-		soap_serialize_ns1__GetComplexType(soap, (const struct ns1__GetComplexType *)ptr);
-		break;
-	case SOAP_TYPE_ns1__GetComplexTypeResponse:
-		soap_serialize_ns1__GetComplexTypeResponse(soap, (const struct ns1__GetComplexTypeResponse *)ptr);
-		break;
-	case SOAP_TYPE_PointerToComplexTypeDemoArray:
-		soap_serialize_PointerToComplexTypeDemoArray(soap, (ComplexTypeDemoArray *const*)ptr);
+	case SOAP_TYPE_ns1__AccountAuthResponse:
+		soap_serialize_ns1__AccountAuthResponse(soap, (const struct ns1__AccountAuthResponse *)ptr);
 		break;
 	case SOAP_TYPE_PointerTostringArray:
 		soap_serialize_PointerTostringArray(soap, (stringArray *const*)ptr);
-		break;
-	case SOAP_TYPE_PointerToint:
-		soap_serialize_PointerToint(soap, (int *const*)ptr);
-		break;
-	case SOAP_TYPE_PointerToPointerTons1__ComplexTypeDemo:
-		soap_serialize_PointerToPointerTons1__ComplexTypeDemo(soap, (ns1__ComplexTypeDemo **const*)ptr);
-		break;
-	case SOAP_TYPE_PointerTons1__ComplexTypeDemo:
-		soap_serialize_PointerTons1__ComplexTypeDemo(soap, (ns1__ComplexTypeDemo *const*)ptr);
 		break;
 	case SOAP_TYPE_PointerTostd__string:
 		soap_serialize_PointerTostd__string(soap, (std::string *const*)ptr);
@@ -555,34 +464,24 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_instantiate(struct soap *soap, int t, const ch
 	{
 	case SOAP_TYPE_std__string:
 		return (void*)soap_instantiate_std__string(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__ComplexTypeDemo:
-		return (void*)soap_instantiate_ns1__ComplexTypeDemo(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_stringArray:
 		return (void*)soap_instantiate_stringArray(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ComplexTypeDemoArray:
-		return (void*)soap_instantiate_ComplexTypeDemoArray(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_arrayOfInt:
-		return (void*)soap_instantiate_arrayOfInt(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__GetComplexTypeResponse:
-		return (void*)soap_instantiate_ns1__GetComplexTypeResponse(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__GetComplexType:
-		return (void*)soap_instantiate_ns1__GetComplexType(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__PrintComplexTypeResponse:
-		return (void*)soap_instantiate_ns1__PrintComplexTypeResponse(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__PrintComplexType:
-		return (void*)soap_instantiate_ns1__PrintComplexType(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse:
-		return (void*)soap_instantiate_ns1__ComplexTypeArrayDemoResponse(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemo:
-		return (void*)soap_instantiate_ns1__ComplexTypeArrayDemo(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__SayHelloResponse:
-		return (void*)soap_instantiate_ns1__SayHelloResponse(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__SayHello:
-		return (void*)soap_instantiate_ns1__SayHello(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__DemoMethodResponse:
-		return (void*)soap_instantiate_ns1__DemoMethodResponse(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns1__DemoMethod:
-		return (void*)soap_instantiate_ns1__DemoMethod(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns1__AccountAuthResponse:
+		return (void*)soap_instantiate_ns1__AccountAuthResponse(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns1__AccountAuth:
+		return (void*)soap_instantiate_ns1__AccountAuth(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns1__SendWordResponse:
+		return (void*)soap_instantiate_ns1__SendWordResponse(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns1__SendWord:
+		return (void*)soap_instantiate_ns1__SendWord(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns1__GetWordResponse:
+		return (void*)soap_instantiate_ns1__GetWordResponse(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns1__GetWord:
+		return (void*)soap_instantiate_ns1__GetWord(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns1__PlayWordResponse:
+		return (void*)soap_instantiate_ns1__PlayWordResponse(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns1__PlayWord:
+		return (void*)soap_instantiate_ns1__PlayWord(soap, -1, type, arrayType, n);
 #ifndef WITH_NOGLOBAL
 	case SOAP_TYPE_SOAP_ENV__Header:
 		return (void*)soap_instantiate_SOAP_ENV__Header(soap, -1, type, arrayType, n);
@@ -616,89 +515,59 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_fdelete(struct soap_clist *p)
 		else
 			SOAP_DELETE_ARRAY(static_cast<std::string*>(p->ptr));
 		break;
-	case SOAP_TYPE_ns1__ComplexTypeDemo:
-		if (p->size < 0)
-			SOAP_DELETE(static_cast<ns1__ComplexTypeDemo*>(p->ptr));
-		else
-			SOAP_DELETE_ARRAY(static_cast<ns1__ComplexTypeDemo*>(p->ptr));
-		break;
 	case SOAP_TYPE_stringArray:
 		if (p->size < 0)
 			SOAP_DELETE(static_cast<stringArray*>(p->ptr));
 		else
 			SOAP_DELETE_ARRAY(static_cast<stringArray*>(p->ptr));
 		break;
-	case SOAP_TYPE_ComplexTypeDemoArray:
+	case SOAP_TYPE_ns1__AccountAuthResponse:
 		if (p->size < 0)
-			SOAP_DELETE(static_cast<ComplexTypeDemoArray*>(p->ptr));
+			SOAP_DELETE(static_cast<struct ns1__AccountAuthResponse*>(p->ptr));
 		else
-			SOAP_DELETE_ARRAY(static_cast<ComplexTypeDemoArray*>(p->ptr));
+			SOAP_DELETE_ARRAY(static_cast<struct ns1__AccountAuthResponse*>(p->ptr));
 		break;
-	case SOAP_TYPE_arrayOfInt:
+	case SOAP_TYPE_ns1__AccountAuth:
 		if (p->size < 0)
-			SOAP_DELETE(static_cast<arrayOfInt*>(p->ptr));
+			SOAP_DELETE(static_cast<struct ns1__AccountAuth*>(p->ptr));
 		else
-			SOAP_DELETE_ARRAY(static_cast<arrayOfInt*>(p->ptr));
+			SOAP_DELETE_ARRAY(static_cast<struct ns1__AccountAuth*>(p->ptr));
 		break;
-	case SOAP_TYPE_ns1__GetComplexTypeResponse:
+	case SOAP_TYPE_ns1__SendWordResponse:
 		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__GetComplexTypeResponse*>(p->ptr));
+			SOAP_DELETE(static_cast<struct ns1__SendWordResponse*>(p->ptr));
 		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__GetComplexTypeResponse*>(p->ptr));
+			SOAP_DELETE_ARRAY(static_cast<struct ns1__SendWordResponse*>(p->ptr));
 		break;
-	case SOAP_TYPE_ns1__GetComplexType:
+	case SOAP_TYPE_ns1__SendWord:
 		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__GetComplexType*>(p->ptr));
+			SOAP_DELETE(static_cast<struct ns1__SendWord*>(p->ptr));
 		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__GetComplexType*>(p->ptr));
+			SOAP_DELETE_ARRAY(static_cast<struct ns1__SendWord*>(p->ptr));
 		break;
-	case SOAP_TYPE_ns1__PrintComplexTypeResponse:
+	case SOAP_TYPE_ns1__GetWordResponse:
 		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__PrintComplexTypeResponse*>(p->ptr));
+			SOAP_DELETE(static_cast<struct ns1__GetWordResponse*>(p->ptr));
 		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__PrintComplexTypeResponse*>(p->ptr));
+			SOAP_DELETE_ARRAY(static_cast<struct ns1__GetWordResponse*>(p->ptr));
 		break;
-	case SOAP_TYPE_ns1__PrintComplexType:
+	case SOAP_TYPE_ns1__GetWord:
 		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__PrintComplexType*>(p->ptr));
+			SOAP_DELETE(static_cast<struct ns1__GetWord*>(p->ptr));
 		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__PrintComplexType*>(p->ptr));
+			SOAP_DELETE_ARRAY(static_cast<struct ns1__GetWord*>(p->ptr));
 		break;
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse:
+	case SOAP_TYPE_ns1__PlayWordResponse:
 		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__ComplexTypeArrayDemoResponse*>(p->ptr));
+			SOAP_DELETE(static_cast<struct ns1__PlayWordResponse*>(p->ptr));
 		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__ComplexTypeArrayDemoResponse*>(p->ptr));
+			SOAP_DELETE_ARRAY(static_cast<struct ns1__PlayWordResponse*>(p->ptr));
 		break;
-	case SOAP_TYPE_ns1__ComplexTypeArrayDemo:
+	case SOAP_TYPE_ns1__PlayWord:
 		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__ComplexTypeArrayDemo*>(p->ptr));
+			SOAP_DELETE(static_cast<struct ns1__PlayWord*>(p->ptr));
 		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__ComplexTypeArrayDemo*>(p->ptr));
-		break;
-	case SOAP_TYPE_ns1__SayHelloResponse:
-		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__SayHelloResponse*>(p->ptr));
-		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__SayHelloResponse*>(p->ptr));
-		break;
-	case SOAP_TYPE_ns1__SayHello:
-		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__SayHello*>(p->ptr));
-		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__SayHello*>(p->ptr));
-		break;
-	case SOAP_TYPE_ns1__DemoMethodResponse:
-		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__DemoMethodResponse*>(p->ptr));
-		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__DemoMethodResponse*>(p->ptr));
-		break;
-	case SOAP_TYPE_ns1__DemoMethod:
-		if (p->size < 0)
-			SOAP_DELETE(static_cast<struct ns1__DemoMethod*>(p->ptr));
-		else
-			SOAP_DELETE_ARRAY(static_cast<struct ns1__DemoMethod*>(p->ptr));
+			SOAP_DELETE_ARRAY(static_cast<struct ns1__PlayWord*>(p->ptr));
 		break;
 #ifndef WITH_NOGLOBAL
 	case SOAP_TYPE_SOAP_ENV__Header:
@@ -844,90 +713,6 @@ SOAP_FMAC3 int * SOAP_FMAC4 soap_get_int(struct soap *soap, int *p, const char *
 	return p;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_bool(struct soap *soap, bool *a)
-{
-	(void)soap; /* appease -Wall -Werror */
-#ifdef SOAP_DEFAULT_bool
-	*a = SOAP_DEFAULT_bool;
-#else
-	*a = (bool)0;
-#endif
-}
-
-static const struct soap_code_map soap_codes_bool[] =
-{	{ (long)false, "false" },
-	{ (long)true, "true" },
-	{ 0, NULL }
-};
-
-SOAP_FMAC3S const char* SOAP_FMAC4S soap_bool2s(struct soap *soap, bool n)
-{
-	(void)soap; /* appease -Wall -Werror */
-return soap_code_str(soap_codes_bool, n != 0);
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_bool(struct soap *soap, const char *tag, int id, const bool *a, const char *type)
-{	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_bool), type) || soap_send(soap, soap_bool2s(soap, *a)))
-		return soap->error;
-	return soap_element_end_out(soap, tag);
-}
-
-SOAP_FMAC3S int SOAP_FMAC4S soap_s2bool(struct soap *soap, const char *s, bool *a)
-{
-	const struct soap_code_map *map;
-	if (!s)
-		return soap->error;
-	map = soap_code(soap_codes_bool, s);
-	if (map)
-		*a = (bool)(map->code != 0);
-	else
-	{	long n;
-		if (soap_s2long(soap, s, &n) || n < 0 || n > 1)
-			return soap->error = SOAP_TYPE;
-		*a = (bool)(n != 0);
-	}
-	return SOAP_OK;
-}
-
-SOAP_FMAC3 bool * SOAP_FMAC4 soap_in_bool(struct soap *soap, const char *tag, bool *a, const char *type)
-{
-	if (soap_element_begin_in(soap, tag, 0, NULL))
-		return NULL;
-	if (*soap->type && soap_match_tag(soap, soap->type, type) && soap_match_tag(soap, soap->type, ":boolean"))
-	{	soap->error = SOAP_TYPE;
-		return NULL;
-	}
-	a = (bool *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_bool, sizeof(bool), 0, NULL, NULL, NULL);
-	if (!a)
-		return NULL;
-	if (soap->body && !*soap->href)
-	{	if (soap_s2bool(soap, soap_value(soap), a) || soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (bool *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_bool, 0, sizeof(bool), 0, NULL);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_bool(struct soap *soap, const bool *a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_bool);
-	if (soap_out_bool(soap, tag?tag:"boolean", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 bool * SOAP_FMAC4 soap_get_bool(struct soap *soap, bool *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_bool(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__string(struct soap *soap, std::string *p)
 {
 	(void)soap; /* appease -Wall -Werror */
@@ -1016,343 +801,6 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__string(struct soap *soap, int st, int 
 	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
 	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying std::string %p -> %p\n", q, p));
 	*(std::string*)p = *(std::string*)q;
-}
-
-void arrayOfInt::soap_default(struct soap *soap)
-{
-	this->soap = soap;
-	this->__size = 0;
-	this->__ptr = NULL;
-}
-
-void arrayOfInt::soap_serialize(struct soap *soap) const
-{
-	(void)soap; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-	if (this->__ptr && !soap_array_reference(soap, this, (struct soap_array*)(void*)&this->__ptr, 1, SOAP_TYPE_arrayOfInt))
-		for (int i = 0; i < this->__size; i++)
-		{	soap_embedded(soap, this->__ptr + i, SOAP_TYPE_int);
-		}
-#endif
-}
-
-int arrayOfInt::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
-{	return soap_out_arrayOfInt(soap, tag, id, this, type);
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_arrayOfInt(struct soap *soap, const char *tag, int id, const arrayOfInt *a, const char *type)
-{
-	int i, n = a->__size;
-	char *t = a->__ptr ? soap_putsize(soap, "xsd:int", a->__size) : NULL;
-	id = soap_element_id(soap, tag, id, a, (struct soap_array*)(void*)&a->__ptr, 1, type, SOAP_TYPE_arrayOfInt);
-	if (id < 0)
-		return soap->error;
-	if (soap_array_begin_out(soap, tag, id, t, NULL))
-		return soap->error;
-	for (i = 0; i < n; i++)
-	{
-		soap->position = 1;
-		soap->positions[0] = i;
-		soap_out_int(soap, "item", -1, &a->__ptr[i], "");
-	}
-	soap->position = 0;
-	return soap_element_end_out(soap, tag);
-}
-
-void *arrayOfInt::soap_in(struct soap *soap, const char *tag, const char *type)
-{	return soap_in_arrayOfInt(soap, tag, this, type);
-}
-
-SOAP_FMAC3 arrayOfInt * SOAP_FMAC4 soap_in_arrayOfInt(struct soap *soap, const char *tag, arrayOfInt *a, const char *type)
-{	int i, j;
-	int *p;
-	if (soap_element_begin_in(soap, tag, 1, NULL))
-		return NULL;
-	if (soap_match_array(soap, type))
-	{	soap->error = SOAP_TYPE;
-		return NULL;
-	}
-	a = (arrayOfInt *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_arrayOfInt, sizeof(arrayOfInt), soap->type, soap->arrayType);
-	if (!a)
-		return NULL;
-	if (soap->alloced)
-		a->soap_default(soap);
-	if (soap->body && !*soap->href)
-	{
-		a->__size = soap_getsize(soap->arraySize, soap->arrayOffset, &j);
-		if (a->__size >= 0)
-		{	a->__ptr = (int *)soap_malloc(soap, sizeof(int) * a->__size);
-			for (i = 0; i < a->__size; i++)
-				soap_default_int(soap, a->__ptr+i);
-			for (i = 0; i < a->__size; i++)
-			{	soap_peek_element(soap);
-				if (soap->position)
-				{	i = soap->positions[0]-j;
-					if (i < 0 || i >= a->__size)
-					{	soap->error = SOAP_IOB;
-						return NULL;
-					}
-				}
-				if (!soap_in_int(soap, NULL, a->__ptr + i, "xsd:int"))
-				{	if (soap->error != SOAP_NO_TAG)
-						return NULL;
-					soap->error = SOAP_OK;
-					break;
-				}
-			}
-		}
-		else
-		{	if (soap_new_block(soap) == NULL)
-				return NULL;
-			for (a->__size = 0; ; a->__size++)
-			{	p = (int *)soap_push_block(soap, NULL, sizeof(int));
-				if (!p)
-					return NULL;
-				soap_default_int(soap, p);
-				if (!soap_in_int(soap, NULL, p, "xsd:int"))
-				{	if (soap->error != SOAP_NO_TAG)
-						return NULL;
-					soap->error = SOAP_OK;
-					break;
-				}
-			}
-			soap_pop_block(soap, NULL);
-			a->__ptr = (int *)soap_malloc(soap, soap->blist->size);
-			soap_save_block(soap, NULL, (char*)a->__ptr, 1);
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (arrayOfInt *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_arrayOfInt, 0, sizeof(arrayOfInt), 0, soap_copy_arrayOfInt);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-int arrayOfInt::soap_put(struct soap *soap, const char *tag, const  char *type) const
-{
-	int id = soap_embed(soap, (void*)this, (struct soap_array*)(void*)&this->__ptr, 1, SOAP_TYPE_arrayOfInt);
-	if (this->soap_out(soap, tag?tag:"SOAP-ENC:Array", id, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-void *arrayOfInt::soap_get(struct soap *soap, const char *tag, const char *type)
-{
-	return soap_get_arrayOfInt(soap, this, tag, type);
-}
-
-SOAP_FMAC3 arrayOfInt * SOAP_FMAC4 soap_get_arrayOfInt(struct soap *soap, arrayOfInt *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_arrayOfInt(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC1 arrayOfInt * SOAP_FMAC2 soap_instantiate_arrayOfInt(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_arrayOfInt(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_arrayOfInt, n, soap_fdelete);
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	if (!cp)
-		return NULL;
-	if (n < 0)
-	{	cp->ptr = SOAP_NEW(arrayOfInt);
-		if (size)
-			*size = sizeof(arrayOfInt);
-		((arrayOfInt*)cp->ptr)->soap = soap;
-	}
-	else
-	{	cp->ptr = SOAP_NEW_ARRAY(arrayOfInt, n);
-		if (size)
-			*size = n * sizeof(arrayOfInt);
-		if (cp->ptr)
-			for (int i = 0; i < n; i++)
-				((arrayOfInt*)cp->ptr)[i].soap = soap;
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
-	if (!cp->ptr)
-		soap->error = SOAP_EOM;
-	return (arrayOfInt*)cp->ptr;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_arrayOfInt(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
-{
-	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying arrayOfInt %p -> %p\n", q, p));
-	*(arrayOfInt*)p = *(arrayOfInt*)q;
-}
-
-void ComplexTypeDemoArray::soap_default(struct soap *soap)
-{
-	this->soap = soap;
-	this->__size = 0;
-	this->__ptr = NULL;
-}
-
-void ComplexTypeDemoArray::soap_serialize(struct soap *soap) const
-{
-	(void)soap; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-	if (this->__ptr && !soap_array_reference(soap, this, (struct soap_array*)(void*)&this->__ptr, 1, SOAP_TYPE_ComplexTypeDemoArray))
-		for (int i = 0; i < this->__size; i++)
-		{
-			soap_serialize_PointerTons1__ComplexTypeDemo(soap, this->__ptr + i);
-		}
-#endif
-}
-
-int ComplexTypeDemoArray::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
-{	return soap_out_ComplexTypeDemoArray(soap, tag, id, this, type);
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ComplexTypeDemoArray(struct soap *soap, const char *tag, int id, const ComplexTypeDemoArray *a, const char *type)
-{
-	int i, n = a->__size;
-	char *t = a->__ptr ? soap_putsize(soap, "ns1:ComplexTypeDemo", a->__size) : NULL;
-	id = soap_element_id(soap, tag, id, a, (struct soap_array*)(void*)&a->__ptr, 1, type, SOAP_TYPE_ComplexTypeDemoArray);
-	if (id < 0)
-		return soap->error;
-	if (soap_array_begin_out(soap, tag, id, t, NULL))
-		return soap->error;
-	for (i = 0; i < n; i++)
-	{
-		soap->position = 1;
-		soap->positions[0] = i;
-		soap_out_PointerTons1__ComplexTypeDemo(soap, "item", -1, &a->__ptr[i], "");
-	}
-	soap->position = 0;
-	return soap_element_end_out(soap, tag);
-}
-
-void *ComplexTypeDemoArray::soap_in(struct soap *soap, const char *tag, const char *type)
-{	return soap_in_ComplexTypeDemoArray(soap, tag, this, type);
-}
-
-SOAP_FMAC3 ComplexTypeDemoArray * SOAP_FMAC4 soap_in_ComplexTypeDemoArray(struct soap *soap, const char *tag, ComplexTypeDemoArray *a, const char *type)
-{	int i, j;
-	ns1__ComplexTypeDemo **p;
-	if (soap_element_begin_in(soap, tag, 1, NULL))
-		return NULL;
-	if (soap_match_array(soap, type))
-	{	soap->error = SOAP_TYPE;
-		return NULL;
-	}
-	a = (ComplexTypeDemoArray *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_ComplexTypeDemoArray, sizeof(ComplexTypeDemoArray), soap->type, soap->arrayType);
-	if (!a)
-		return NULL;
-	if (soap->alloced)
-		a->soap_default(soap);
-	if (soap->body && !*soap->href)
-	{
-		a->__size = soap_getsize(soap->arraySize, soap->arrayOffset, &j);
-		if (a->__size >= 0)
-		{	a->__ptr = (ns1__ComplexTypeDemo **)soap_malloc(soap, sizeof(ns1__ComplexTypeDemo *) * a->__size);
-			for (i = 0; i < a->__size; i++)
-				a->__ptr[i] = NULL;
-			for (i = 0; i < a->__size; i++)
-			{	soap_peek_element(soap);
-				if (soap->position)
-				{	i = soap->positions[0]-j;
-					if (i < 0 || i >= a->__size)
-					{	soap->error = SOAP_IOB;
-						return NULL;
-					}
-				}
-				if (!soap_in_PointerTons1__ComplexTypeDemo(soap, NULL, a->__ptr + i, "ns1:ComplexTypeDemo"))
-				{	if (soap->error != SOAP_NO_TAG)
-						return NULL;
-					soap->error = SOAP_OK;
-					break;
-				}
-			}
-		}
-		else
-		{	if (soap_new_block(soap) == NULL)
-				return NULL;
-			for (a->__size = 0; ; a->__size++)
-			{	p = (ns1__ComplexTypeDemo **)soap_push_block(soap, NULL, sizeof(ns1__ComplexTypeDemo *));
-				if (!p)
-					return NULL;
-				*p = NULL;
-				if (!soap_in_PointerTons1__ComplexTypeDemo(soap, NULL, p, "ns1:ComplexTypeDemo"))
-				{	if (soap->error != SOAP_NO_TAG)
-						return NULL;
-					soap->error = SOAP_OK;
-					break;
-				}
-			}
-			soap_pop_block(soap, NULL);
-			a->__ptr = (ns1__ComplexTypeDemo **)soap_malloc(soap, soap->blist->size);
-			soap_save_block(soap, NULL, (char*)a->__ptr, 1);
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (ComplexTypeDemoArray *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ComplexTypeDemoArray, 0, sizeof(ComplexTypeDemoArray), 0, soap_copy_ComplexTypeDemoArray);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-int ComplexTypeDemoArray::soap_put(struct soap *soap, const char *tag, const  char *type) const
-{
-	int id = soap_embed(soap, (void*)this, (struct soap_array*)(void*)&this->__ptr, 1, SOAP_TYPE_ComplexTypeDemoArray);
-	if (this->soap_out(soap, tag?tag:"SOAP-ENC:Array", id, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-void *ComplexTypeDemoArray::soap_get(struct soap *soap, const char *tag, const char *type)
-{
-	return soap_get_ComplexTypeDemoArray(soap, this, tag, type);
-}
-
-SOAP_FMAC3 ComplexTypeDemoArray * SOAP_FMAC4 soap_get_ComplexTypeDemoArray(struct soap *soap, ComplexTypeDemoArray *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_ComplexTypeDemoArray(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC1 ComplexTypeDemoArray * SOAP_FMAC2 soap_instantiate_ComplexTypeDemoArray(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ComplexTypeDemoArray(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ComplexTypeDemoArray, n, soap_fdelete);
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	if (!cp)
-		return NULL;
-	if (n < 0)
-	{	cp->ptr = SOAP_NEW(ComplexTypeDemoArray);
-		if (size)
-			*size = sizeof(ComplexTypeDemoArray);
-		((ComplexTypeDemoArray*)cp->ptr)->soap = soap;
-	}
-	else
-	{	cp->ptr = SOAP_NEW_ARRAY(ComplexTypeDemoArray, n);
-		if (size)
-			*size = n * sizeof(ComplexTypeDemoArray);
-		if (cp->ptr)
-			for (int i = 0; i < n; i++)
-				((ComplexTypeDemoArray*)cp->ptr)[i].soap = soap;
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
-	if (!cp->ptr)
-		soap->error = SOAP_EOM;
-	return (ComplexTypeDemoArray*)cp->ptr;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ComplexTypeDemoArray(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
-{
-	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying ComplexTypeDemoArray %p -> %p\n", q, p));
-	*(ComplexTypeDemoArray*)p = *(ComplexTypeDemoArray*)q;
 }
 
 void stringArray::soap_default(struct soap *soap)
@@ -1526,183 +974,6 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_stringArray(struct soap *soap, int st, int 
 	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
 	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying stringArray %p -> %p\n", q, p));
 	*(stringArray*)p = *(stringArray*)q;
-}
-
-void ns1__ComplexTypeDemo::soap_default(struct soap *soap)
-{
-	this->soap = soap;
-	this->ns1__ComplexTypeDemo::StringA = NULL;
-	this->ns1__ComplexTypeDemo::StringB = NULL;
-	soap_default_int(soap, &this->ns1__ComplexTypeDemo::Integer);
-	soap_default_bool(soap, &this->ns1__ComplexTypeDemo::Boolean);
-	/* transient soap skipped */
-}
-
-void ns1__ComplexTypeDemo::soap_serialize(struct soap *soap) const
-{
-	(void)soap; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-	soap_serialize_PointerTostd__string(soap, &this->ns1__ComplexTypeDemo::StringA);
-	soap_serialize_PointerTostd__string(soap, &this->ns1__ComplexTypeDemo::StringB);
-	soap_embedded(soap, &this->ns1__ComplexTypeDemo::Integer, SOAP_TYPE_int);
-	/* transient soap skipped */
-#endif
-}
-
-int ns1__ComplexTypeDemo::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
-{
-	return soap_out_ns1__ComplexTypeDemo(soap, tag, id, this, type);
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__ComplexTypeDemo(struct soap *soap, const char *tag, int id, const ns1__ComplexTypeDemo *a, const char *type)
-{
-	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__ComplexTypeDemo), type))
-		return soap->error;
-	if (a->ns1__ComplexTypeDemo::StringA)
-	{	if (soap_out_PointerTostd__string(soap, "StringA", -1, &a->ns1__ComplexTypeDemo::StringA, ""))
-			return soap->error;
-	}
-	else if (soap_element_nil(soap, "StringA"))
-		return soap->error;
-	if (a->ns1__ComplexTypeDemo::StringB)
-	{	if (soap_out_PointerTostd__string(soap, "StringB", -1, &a->ns1__ComplexTypeDemo::StringB, ""))
-			return soap->error;
-	}
-	else if (soap_element_nil(soap, "StringB"))
-		return soap->error;
-	if (soap_out_int(soap, "Integer", -1, &(a->ns1__ComplexTypeDemo::Integer), ""))
-		return soap->error;
-	if (soap_out_bool(soap, "Boolean", -1, &(a->ns1__ComplexTypeDemo::Boolean), ""))
-		return soap->error;
-	/* transient soap skipped */
-	return soap_element_end_out(soap, tag);
-}
-
-void *ns1__ComplexTypeDemo::soap_in(struct soap *soap, const char *tag, const char *type)
-{	return soap_in_ns1__ComplexTypeDemo(soap, tag, this, type);
-}
-
-SOAP_FMAC3 ns1__ComplexTypeDemo * SOAP_FMAC4 soap_in_ns1__ComplexTypeDemo(struct soap *soap, const char *tag, ns1__ComplexTypeDemo *a, const char *type)
-{
-	(void)tag; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_in(soap, tag, 0, NULL))
-		return NULL;
-	a = (ns1__ComplexTypeDemo *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__ComplexTypeDemo, sizeof(ns1__ComplexTypeDemo), soap->type, soap->arrayType);
-	if (!a)
-		return NULL;
-	if (soap->alloced)
-	{	a->soap_default(soap);
-		if (soap->clist->type != SOAP_TYPE_ns1__ComplexTypeDemo)
-		{	soap_revert(soap);
-			*soap->id = '\0';
-			return (ns1__ComplexTypeDemo *)a->soap_in(soap, tag, type);
-		}
-	}
-	size_t soap_flag_StringA1 = 1;
-	size_t soap_flag_StringB1 = 1;
-	size_t soap_flag_Integer1 = 1;
-	size_t soap_flag_Boolean1 = 1;
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_StringA1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-				if (soap_in_PointerTostd__string(soap, "StringA", &(a->ns1__ComplexTypeDemo::StringA), "xsd:string"))
-				{	soap_flag_StringA1--;
-					continue;
-				}
-			if (soap_flag_StringB1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-				if (soap_in_PointerTostd__string(soap, "StringB", &(a->ns1__ComplexTypeDemo::StringB), "xsd:string"))
-				{	soap_flag_StringB1--;
-					continue;
-				}
-			if (soap_flag_Integer1 && soap->error == SOAP_TAG_MISMATCH)
-				if (soap_in_int(soap, "Integer", &(a->ns1__ComplexTypeDemo::Integer), "xsd:int"))
-				{	soap_flag_Integer1--;
-					continue;
-				}
-			if (soap_flag_Boolean1 && soap->error == SOAP_TAG_MISMATCH)
-				if (soap_in_bool(soap, "Boolean", &(a->ns1__ComplexTypeDemo::Boolean), "xsd:boolean"))
-				{	soap_flag_Boolean1--;
-					continue;
-				}
-			/* transient soap skipped */
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (ns1__ComplexTypeDemo *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__ComplexTypeDemo, 0, sizeof(ns1__ComplexTypeDemo), 0, soap_copy_ns1__ComplexTypeDemo);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_StringA1 > 0 || soap_flag_StringB1 > 0 || soap_flag_Integer1 > 0 || soap_flag_Boolean1 > 0))
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
-	}
-	return a;
-}
-
-int ns1__ComplexTypeDemo::soap_put(struct soap *soap, const char *tag, const  char *type) const
-{
-	int id = soap_embed(soap, (void*)this, NULL, 0, SOAP_TYPE_ns1__ComplexTypeDemo);
-	if (this->soap_out(soap, tag?tag:"ns1:ComplexTypeDemo", id, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-void *ns1__ComplexTypeDemo::soap_get(struct soap *soap, const char *tag, const char *type)
-{
-	return soap_get_ns1__ComplexTypeDemo(soap, this, tag, type);
-}
-
-SOAP_FMAC3 ns1__ComplexTypeDemo * SOAP_FMAC4 soap_get_ns1__ComplexTypeDemo(struct soap *soap, ns1__ComplexTypeDemo *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_ns1__ComplexTypeDemo(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC1 ns1__ComplexTypeDemo * SOAP_FMAC2 soap_instantiate_ns1__ComplexTypeDemo(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__ComplexTypeDemo(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__ComplexTypeDemo, n, soap_fdelete);
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	if (!cp)
-		return NULL;
-	if (n < 0)
-	{	cp->ptr = SOAP_NEW(ns1__ComplexTypeDemo);
-		if (size)
-			*size = sizeof(ns1__ComplexTypeDemo);
-		((ns1__ComplexTypeDemo*)cp->ptr)->soap = soap;
-	}
-	else
-	{	cp->ptr = SOAP_NEW_ARRAY(ns1__ComplexTypeDemo, n);
-		if (size)
-			*size = n * sizeof(ns1__ComplexTypeDemo);
-		if (cp->ptr)
-			for (int i = 0; i < n; i++)
-				((ns1__ComplexTypeDemo*)cp->ptr)[i].soap = soap;
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
-	if (!cp->ptr)
-		soap->error = SOAP_EOM;
-	return (ns1__ComplexTypeDemo*)cp->ptr;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__ComplexTypeDemo(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
-{
-	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying ns1__ComplexTypeDemo %p -> %p\n", q, p));
-	*(ns1__ComplexTypeDemo*)p = *(ns1__ComplexTypeDemo*)q;
 }
 
 #ifndef WITH_NOGLOBAL
@@ -2348,239 +1619,63 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_SOAP_ENV__Header(struct soap *soap, int st,
 
 #endif
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__DemoMethod(struct soap *soap, struct ns1__DemoMethod *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__PlayWord(struct soap *soap, struct ns1__PlayWord *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
+	soap_default_int(soap, &a->_id);
+	soap_default_int(soap, &a->_value);
+	soap_default_int(soap, &a->_direction);
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__DemoMethod(struct soap *soap, const struct ns1__DemoMethod *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__DemoMethod(struct soap *soap, const char *tag, int id, const struct ns1__DemoMethod *a, const char *type)
-{
-	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__DemoMethod), type))
-		return soap->error;
-	return soap_element_end_out(soap, tag);
-}
-
-SOAP_FMAC3 struct ns1__DemoMethod * SOAP_FMAC4 soap_in_ns1__DemoMethod(struct soap *soap, const char *tag, struct ns1__DemoMethod *a, const char *type)
-{
-	if (soap_element_begin_in(soap, tag, 0, type))
-		return NULL;
-	a = (struct ns1__DemoMethod *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__DemoMethod, sizeof(struct ns1__DemoMethod), 0, NULL, NULL, NULL);
-	if (!a)
-		return NULL;
-	soap_default_ns1__DemoMethod(soap, a);
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (struct ns1__DemoMethod *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__DemoMethod, 0, sizeof(struct ns1__DemoMethod), 0, NULL);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__DemoMethod(struct soap *soap, const struct ns1__DemoMethod *a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__DemoMethod);
-	if (soap_out_ns1__DemoMethod(soap, tag?tag:"ns1:DemoMethod", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 struct ns1__DemoMethod * SOAP_FMAC4 soap_get_ns1__DemoMethod(struct soap *soap, struct ns1__DemoMethod *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_ns1__DemoMethod(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC1 struct ns1__DemoMethod * SOAP_FMAC2 soap_instantiate_ns1__DemoMethod(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__DemoMethod(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__DemoMethod, n, soap_fdelete);
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	if (!cp)
-		return NULL;
-	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__DemoMethod);
-		if (size)
-			*size = sizeof(struct ns1__DemoMethod);
-	}
-	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__DemoMethod, n);
-		if (size)
-			*size = n * sizeof(struct ns1__DemoMethod);
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
-	if (!cp->ptr)
-		soap->error = SOAP_EOM;
-	return (struct ns1__DemoMethod*)cp->ptr;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__DemoMethod(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
-{
-	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__DemoMethod %p -> %p\n", q, p));
-	*(struct ns1__DemoMethod*)p = *(struct ns1__DemoMethod*)q;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__DemoMethodResponse(struct soap *soap, struct ns1__DemoMethodResponse *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__DemoMethodResponse(struct soap *soap, const struct ns1__DemoMethodResponse *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__PlayWord(struct soap *soap, const struct ns1__PlayWord *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__DemoMethodResponse(struct soap *soap, const char *tag, int id, const struct ns1__DemoMethodResponse *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__PlayWord(struct soap *soap, const char *tag, int id, const struct ns1__PlayWord *a, const char *type)
 {
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__DemoMethodResponse), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__PlayWord), type))
+		return soap->error;
+	if (soap_out_int(soap, "id", -1, &a->_id, ""))
+		return soap->error;
+	if (soap_out_int(soap, "value", -1, &a->_value, ""))
+		return soap->error;
+	if (soap_out_int(soap, "direction", -1, &a->_direction, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-SOAP_FMAC3 struct ns1__DemoMethodResponse * SOAP_FMAC4 soap_in_ns1__DemoMethodResponse(struct soap *soap, const char *tag, struct ns1__DemoMethodResponse *a, const char *type)
+SOAP_FMAC3 struct ns1__PlayWord * SOAP_FMAC4 soap_in_ns1__PlayWord(struct soap *soap, const char *tag, struct ns1__PlayWord *a, const char *type)
 {
+	size_t soap_flag__id = 1;
+	size_t soap_flag__value = 1;
+	size_t soap_flag__direction = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
-	a = (struct ns1__DemoMethodResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__DemoMethodResponse, sizeof(struct ns1__DemoMethodResponse), 0, NULL, NULL, NULL);
+	a = (struct ns1__PlayWord *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__PlayWord, sizeof(struct ns1__PlayWord), 0, NULL, NULL, NULL);
 	if (!a)
 		return NULL;
-	soap_default_ns1__DemoMethodResponse(soap, a);
+	soap_default_ns1__PlayWord(soap, a);
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (struct ns1__DemoMethodResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__DemoMethodResponse, 0, sizeof(struct ns1__DemoMethodResponse), 0, NULL);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__DemoMethodResponse(struct soap *soap, const struct ns1__DemoMethodResponse *a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__DemoMethodResponse);
-	if (soap_out_ns1__DemoMethodResponse(soap, tag?tag:"ns1:DemoMethodResponse", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 struct ns1__DemoMethodResponse * SOAP_FMAC4 soap_get_ns1__DemoMethodResponse(struct soap *soap, struct ns1__DemoMethodResponse *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_ns1__DemoMethodResponse(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC1 struct ns1__DemoMethodResponse * SOAP_FMAC2 soap_instantiate_ns1__DemoMethodResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__DemoMethodResponse(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__DemoMethodResponse, n, soap_fdelete);
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	if (!cp)
-		return NULL;
-	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__DemoMethodResponse);
-		if (size)
-			*size = sizeof(struct ns1__DemoMethodResponse);
-	}
-	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__DemoMethodResponse, n);
-		if (size)
-			*size = n * sizeof(struct ns1__DemoMethodResponse);
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
-	if (!cp->ptr)
-		soap->error = SOAP_EOM;
-	return (struct ns1__DemoMethodResponse*)cp->ptr;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__DemoMethodResponse(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
-{
-	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__DemoMethodResponse %p -> %p\n", q, p));
-	*(struct ns1__DemoMethodResponse*)p = *(struct ns1__DemoMethodResponse*)q;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__SayHello(struct soap *soap, struct ns1__SayHello *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_std__string(soap, &a->name);
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__SayHello(struct soap *soap, const struct ns1__SayHello *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-	soap_embedded(soap, &a->name, SOAP_TYPE_std__string);
-	soap_serialize_std__string(soap, &a->name);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__SayHello(struct soap *soap, const char *tag, int id, const struct ns1__SayHello *a, const char *type)
-{
-	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__SayHello), type))
-		return soap->error;
-	if (soap_out_std__string(soap, "name", -1, &a->name, ""))
-		return soap->error;
-	return soap_element_end_out(soap, tag);
-}
-
-SOAP_FMAC3 struct ns1__SayHello * SOAP_FMAC4 soap_in_ns1__SayHello(struct soap *soap, const char *tag, struct ns1__SayHello *a, const char *type)
-{
-	size_t soap_flag_name = 1;
-	if (soap_element_begin_in(soap, tag, 0, type))
-		return NULL;
-	a = (struct ns1__SayHello *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__SayHello, sizeof(struct ns1__SayHello), soap->type, soap->arrayType);
-	if (!a)
-		return NULL;
-	soap_default_ns1__SayHello(soap, a);
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_name && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-				if (soap_in_std__string(soap, "name", &a->name, "xsd:string"))
-				{	soap_flag_name--;
+			if (soap_flag__id && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_int(soap, NULL, &a->_id, "xsd:int"))
+				{	soap_flag__id--;
+					continue;
+				}
+			if (soap_flag__value && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_int(soap, NULL, &a->_value, "xsd:int"))
+				{	soap_flag__value--;
+					continue;
+				}
+			if (soap_flag__direction && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_int(soap, NULL, &a->_direction, "xsd:int"))
+				{	soap_flag__direction--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -2594,104 +1689,103 @@ SOAP_FMAC3 struct ns1__SayHello * SOAP_FMAC4 soap_in_ns1__SayHello(struct soap *
 			return NULL;
 	}
 	else
-	{	a = (struct ns1__SayHello *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__SayHello, 0, sizeof(struct ns1__SayHello), 0, soap_copy_ns1__SayHello);
+	{	a = (struct ns1__PlayWord *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__PlayWord, 0, sizeof(struct ns1__PlayWord), 0, NULL);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
-	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_name > 0))
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag__id > 0 || soap_flag__value > 0 || soap_flag__direction > 0))
 	{	soap->error = SOAP_OCCURS;
 		return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__SayHello(struct soap *soap, const struct ns1__SayHello *a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__PlayWord(struct soap *soap, const struct ns1__PlayWord *a, const char *tag, const char *type)
 {
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__SayHello);
-	if (soap_out_ns1__SayHello(soap, tag?tag:"ns1:SayHello", id, a, type))
+	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__PlayWord);
+	if (soap_out_ns1__PlayWord(soap, tag?tag:"ns1:PlayWord", id, a, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 struct ns1__SayHello * SOAP_FMAC4 soap_get_ns1__SayHello(struct soap *soap, struct ns1__SayHello *p, const char *tag, const char *type)
+SOAP_FMAC3 struct ns1__PlayWord * SOAP_FMAC4 soap_get_ns1__PlayWord(struct soap *soap, struct ns1__PlayWord *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns1__SayHello(soap, tag, p, type)))
+	if ((p = soap_in_ns1__PlayWord(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-SOAP_FMAC1 struct ns1__SayHello * SOAP_FMAC2 soap_instantiate_ns1__SayHello(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 struct ns1__PlayWord * SOAP_FMAC2 soap_instantiate_ns1__PlayWord(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__SayHello(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__SayHello, n, soap_fdelete);
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__PlayWord(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__PlayWord, n, soap_fdelete);
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
 	if (!cp)
 		return NULL;
 	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__SayHello);
+	{	cp->ptr = SOAP_NEW(struct ns1__PlayWord);
 		if (size)
-			*size = sizeof(struct ns1__SayHello);
+			*size = sizeof(struct ns1__PlayWord);
 	}
 	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__SayHello, n);
+	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__PlayWord, n);
 		if (size)
-			*size = n * sizeof(struct ns1__SayHello);
+			*size = n * sizeof(struct ns1__PlayWord);
 	}
 	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
 	if (!cp->ptr)
 		soap->error = SOAP_EOM;
-	return (struct ns1__SayHello*)cp->ptr;
+	return (struct ns1__PlayWord*)cp->ptr;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__SayHello(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__PlayWord(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
 {
 	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__SayHello %p -> %p\n", q, p));
-	*(struct ns1__SayHello*)p = *(struct ns1__SayHello*)q;
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__PlayWord %p -> %p\n", q, p));
+	*(struct ns1__PlayWord*)p = *(struct ns1__PlayWord*)q;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__SayHelloResponse(struct soap *soap, struct ns1__SayHelloResponse *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__PlayWordResponse(struct soap *soap, struct ns1__PlayWordResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_std__string(soap, &a->return_);
+	a->_return_ = NULL;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__SayHelloResponse(struct soap *soap, const struct ns1__SayHelloResponse *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__PlayWordResponse(struct soap *soap, const struct ns1__PlayWordResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_embedded(soap, &a->return_, SOAP_TYPE_std__string);
-	soap_serialize_std__string(soap, &a->return_);
+	soap_serialize_PointerTostringArray(soap, &a->_return_);
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__SayHelloResponse(struct soap *soap, const char *tag, int id, const struct ns1__SayHelloResponse *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__PlayWordResponse(struct soap *soap, const char *tag, int id, const struct ns1__PlayWordResponse *a, const char *type)
 {
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__SayHelloResponse), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__PlayWordResponse), type))
 		return soap->error;
-	if (soap_out_std__string(soap, "return", -1, &a->return_, ""))
+	if (soap_out_PointerTostringArray(soap, "return", -1, &a->_return_, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-SOAP_FMAC3 struct ns1__SayHelloResponse * SOAP_FMAC4 soap_in_ns1__SayHelloResponse(struct soap *soap, const char *tag, struct ns1__SayHelloResponse *a, const char *type)
+SOAP_FMAC3 struct ns1__PlayWordResponse * SOAP_FMAC4 soap_in_ns1__PlayWordResponse(struct soap *soap, const char *tag, struct ns1__PlayWordResponse *a, const char *type)
 {
-	size_t soap_flag_return_ = 1;
+	size_t soap_flag__return_ = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
-	a = (struct ns1__SayHelloResponse *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__SayHelloResponse, sizeof(struct ns1__SayHelloResponse), soap->type, soap->arrayType);
+	a = (struct ns1__PlayWordResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__PlayWordResponse, sizeof(struct ns1__PlayWordResponse), 0, NULL, NULL, NULL);
 	if (!a)
 		return NULL;
-	soap_default_ns1__SayHelloResponse(soap, a);
+	soap_default_ns1__PlayWordResponse(soap, a);
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_return_ && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-				if (soap_in_std__string(soap, "return", &a->return_, "xsd:string"))
-				{	soap_flag_return_--;
+			if (soap_flag__return_ && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTostringArray(soap, NULL, &a->_return_, "xsd:string"))
+				{	soap_flag__return_--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -2705,103 +1799,220 @@ SOAP_FMAC3 struct ns1__SayHelloResponse * SOAP_FMAC4 soap_in_ns1__SayHelloRespon
 			return NULL;
 	}
 	else
-	{	a = (struct ns1__SayHelloResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__SayHelloResponse, 0, sizeof(struct ns1__SayHelloResponse), 0, soap_copy_ns1__SayHelloResponse);
+	{	a = (struct ns1__PlayWordResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__PlayWordResponse, 0, sizeof(struct ns1__PlayWordResponse), 0, NULL);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
-	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_return_ > 0))
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__PlayWordResponse(struct soap *soap, const struct ns1__PlayWordResponse *a, const char *tag, const char *type)
+{
+	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__PlayWordResponse);
+	if (soap_out_ns1__PlayWordResponse(soap, tag?tag:"ns1:PlayWordResponse", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 struct ns1__PlayWordResponse * SOAP_FMAC4 soap_get_ns1__PlayWordResponse(struct soap *soap, struct ns1__PlayWordResponse *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_ns1__PlayWordResponse(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 struct ns1__PlayWordResponse * SOAP_FMAC2 soap_instantiate_ns1__PlayWordResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__PlayWordResponse(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__PlayWordResponse, n, soap_fdelete);
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = SOAP_NEW(struct ns1__PlayWordResponse);
+		if (size)
+			*size = sizeof(struct ns1__PlayWordResponse);
+	}
+	else
+	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__PlayWordResponse, n);
+		if (size)
+			*size = n * sizeof(struct ns1__PlayWordResponse);
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (struct ns1__PlayWordResponse*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__PlayWordResponse(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__PlayWordResponse %p -> %p\n", q, p));
+	*(struct ns1__PlayWordResponse*)p = *(struct ns1__PlayWordResponse*)q;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__GetWord(struct soap *soap, struct ns1__GetWord *a)
+{
+	(void)soap; (void)a; /* appease -Wall -Werror */
+	soap_default_std__string(soap, &a->_range);
+	a->_opt = NULL;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__GetWord(struct soap *soap, const struct ns1__GetWord *a)
+{
+	(void)soap; (void)a; /* appease -Wall -Werror */
+#ifndef WITH_NOIDREF
+	soap_embedded(soap, &a->_range, SOAP_TYPE_std__string);
+	soap_serialize_std__string(soap, &a->_range);
+	soap_serialize_PointerTostringArray(soap, &a->_opt);
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__GetWord(struct soap *soap, const char *tag, int id, const struct ns1__GetWord *a, const char *type)
+{
+	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__GetWord), type))
+		return soap->error;
+	if (soap_out_std__string(soap, "range", -1, &a->_range, ""))
+		return soap->error;
+	if (soap_out_PointerTostringArray(soap, "opt", -1, &a->_opt, ""))
+		return soap->error;
+	return soap_element_end_out(soap, tag);
+}
+
+SOAP_FMAC3 struct ns1__GetWord * SOAP_FMAC4 soap_in_ns1__GetWord(struct soap *soap, const char *tag, struct ns1__GetWord *a, const char *type)
+{
+	size_t soap_flag__range = 1;
+	size_t soap_flag__opt = 1;
+	if (soap_element_begin_in(soap, tag, 0, type))
+		return NULL;
+	a = (struct ns1__GetWord *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__GetWord, sizeof(struct ns1__GetWord), soap->type, soap->arrayType);
+	if (!a)
+		return NULL;
+	soap_default_ns1__GetWord(soap, a);
+	if (soap->body && !*soap->href)
+	{
+		for (;;)
+		{	soap->error = SOAP_TAG_MISMATCH;
+			if (soap_flag__range && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_in_std__string(soap, NULL, &a->_range, "xsd:string"))
+				{	soap_flag__range--;
+					continue;
+				}
+			if (soap_flag__opt && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTostringArray(soap, NULL, &a->_opt, "xsd:string"))
+				{	soap_flag__opt--;
+					continue;
+				}
+			if (soap->error == SOAP_TAG_MISMATCH)
+				soap->error = soap_ignore_element(soap);
+			if (soap->error == SOAP_NO_TAG)
+				break;
+			if (soap->error)
+				return NULL;
+		}
+		if (soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	else
+	{	a = (struct ns1__GetWord *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__GetWord, 0, sizeof(struct ns1__GetWord), 0, soap_copy_ns1__GetWord);
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag__range > 0))
 	{	soap->error = SOAP_OCCURS;
 		return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__SayHelloResponse(struct soap *soap, const struct ns1__SayHelloResponse *a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__GetWord(struct soap *soap, const struct ns1__GetWord *a, const char *tag, const char *type)
 {
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__SayHelloResponse);
-	if (soap_out_ns1__SayHelloResponse(soap, tag?tag:"ns1:SayHelloResponse", id, a, type))
+	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__GetWord);
+	if (soap_out_ns1__GetWord(soap, tag?tag:"ns1:GetWord", id, a, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 struct ns1__SayHelloResponse * SOAP_FMAC4 soap_get_ns1__SayHelloResponse(struct soap *soap, struct ns1__SayHelloResponse *p, const char *tag, const char *type)
+SOAP_FMAC3 struct ns1__GetWord * SOAP_FMAC4 soap_get_ns1__GetWord(struct soap *soap, struct ns1__GetWord *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns1__SayHelloResponse(soap, tag, p, type)))
+	if ((p = soap_in_ns1__GetWord(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-SOAP_FMAC1 struct ns1__SayHelloResponse * SOAP_FMAC2 soap_instantiate_ns1__SayHelloResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 struct ns1__GetWord * SOAP_FMAC2 soap_instantiate_ns1__GetWord(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__SayHelloResponse(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__SayHelloResponse, n, soap_fdelete);
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__GetWord(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__GetWord, n, soap_fdelete);
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
 	if (!cp)
 		return NULL;
 	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__SayHelloResponse);
+	{	cp->ptr = SOAP_NEW(struct ns1__GetWord);
 		if (size)
-			*size = sizeof(struct ns1__SayHelloResponse);
+			*size = sizeof(struct ns1__GetWord);
 	}
 	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__SayHelloResponse, n);
+	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__GetWord, n);
 		if (size)
-			*size = n * sizeof(struct ns1__SayHelloResponse);
+			*size = n * sizeof(struct ns1__GetWord);
 	}
 	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
 	if (!cp->ptr)
 		soap->error = SOAP_EOM;
-	return (struct ns1__SayHelloResponse*)cp->ptr;
+	return (struct ns1__GetWord*)cp->ptr;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__SayHelloResponse(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__GetWord(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
 {
 	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__SayHelloResponse %p -> %p\n", q, p));
-	*(struct ns1__SayHelloResponse*)p = *(struct ns1__SayHelloResponse*)q;
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__GetWord %p -> %p\n", q, p));
+	*(struct ns1__GetWord*)p = *(struct ns1__GetWord*)q;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__ComplexTypeArrayDemo(struct soap *soap, struct ns1__ComplexTypeArrayDemo *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__GetWordResponse(struct soap *soap, struct ns1__GetWordResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	a->arr = NULL;
+	a->_return_ = NULL;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__ComplexTypeArrayDemo(struct soap *soap, const struct ns1__ComplexTypeArrayDemo *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__GetWordResponse(struct soap *soap, const struct ns1__GetWordResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerToComplexTypeDemoArray(soap, &a->arr);
+	soap_serialize_PointerTostringArray(soap, &a->_return_);
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__ComplexTypeArrayDemo(struct soap *soap, const char *tag, int id, const struct ns1__ComplexTypeArrayDemo *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__GetWordResponse(struct soap *soap, const char *tag, int id, const struct ns1__GetWordResponse *a, const char *type)
 {
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__ComplexTypeArrayDemo), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__GetWordResponse), type))
 		return soap->error;
-	if (soap_out_PointerToComplexTypeDemoArray(soap, "arr", -1, &a->arr, ""))
+	if (soap_out_PointerTostringArray(soap, "return", -1, &a->_return_, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-SOAP_FMAC3 struct ns1__ComplexTypeArrayDemo * SOAP_FMAC4 soap_in_ns1__ComplexTypeArrayDemo(struct soap *soap, const char *tag, struct ns1__ComplexTypeArrayDemo *a, const char *type)
+SOAP_FMAC3 struct ns1__GetWordResponse * SOAP_FMAC4 soap_in_ns1__GetWordResponse(struct soap *soap, const char *tag, struct ns1__GetWordResponse *a, const char *type)
 {
-	size_t soap_flag_arr = 1;
+	size_t soap_flag__return_ = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
-	a = (struct ns1__ComplexTypeArrayDemo *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__ComplexTypeArrayDemo, sizeof(struct ns1__ComplexTypeArrayDemo), 0, NULL, NULL, NULL);
+	a = (struct ns1__GetWordResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__GetWordResponse, sizeof(struct ns1__GetWordResponse), 0, NULL, NULL, NULL);
 	if (!a)
 		return NULL;
-	soap_default_ns1__ComplexTypeArrayDemo(soap, a);
+	soap_default_ns1__GetWordResponse(soap, a);
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_arr && soap->error == SOAP_TAG_MISMATCH)
-				if (soap_in_PointerToComplexTypeDemoArray(soap, "arr", &a->arr, "ns1:ComplexTypeDemo"))
-				{	soap_flag_arr--;
+			if (soap_flag__return_ && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTostringArray(soap, NULL, &a->_return_, "xsd:string"))
+				{	soap_flag__return_--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -2815,99 +2026,133 @@ SOAP_FMAC3 struct ns1__ComplexTypeArrayDemo * SOAP_FMAC4 soap_in_ns1__ComplexTyp
 			return NULL;
 	}
 	else
-	{	a = (struct ns1__ComplexTypeArrayDemo *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__ComplexTypeArrayDemo, 0, sizeof(struct ns1__ComplexTypeArrayDemo), 0, NULL);
+	{	a = (struct ns1__GetWordResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__GetWordResponse, 0, sizeof(struct ns1__GetWordResponse), 0, NULL);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__ComplexTypeArrayDemo(struct soap *soap, const struct ns1__ComplexTypeArrayDemo *a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__GetWordResponse(struct soap *soap, const struct ns1__GetWordResponse *a, const char *tag, const char *type)
 {
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__ComplexTypeArrayDemo);
-	if (soap_out_ns1__ComplexTypeArrayDemo(soap, tag?tag:"ns1:ComplexTypeArrayDemo", id, a, type))
+	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__GetWordResponse);
+	if (soap_out_ns1__GetWordResponse(soap, tag?tag:"ns1:GetWordResponse", id, a, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 struct ns1__ComplexTypeArrayDemo * SOAP_FMAC4 soap_get_ns1__ComplexTypeArrayDemo(struct soap *soap, struct ns1__ComplexTypeArrayDemo *p, const char *tag, const char *type)
+SOAP_FMAC3 struct ns1__GetWordResponse * SOAP_FMAC4 soap_get_ns1__GetWordResponse(struct soap *soap, struct ns1__GetWordResponse *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns1__ComplexTypeArrayDemo(soap, tag, p, type)))
+	if ((p = soap_in_ns1__GetWordResponse(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-SOAP_FMAC1 struct ns1__ComplexTypeArrayDemo * SOAP_FMAC2 soap_instantiate_ns1__ComplexTypeArrayDemo(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 struct ns1__GetWordResponse * SOAP_FMAC2 soap_instantiate_ns1__GetWordResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__ComplexTypeArrayDemo(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__ComplexTypeArrayDemo, n, soap_fdelete);
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__GetWordResponse(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__GetWordResponse, n, soap_fdelete);
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
 	if (!cp)
 		return NULL;
 	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__ComplexTypeArrayDemo);
+	{	cp->ptr = SOAP_NEW(struct ns1__GetWordResponse);
 		if (size)
-			*size = sizeof(struct ns1__ComplexTypeArrayDemo);
+			*size = sizeof(struct ns1__GetWordResponse);
 	}
 	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__ComplexTypeArrayDemo, n);
+	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__GetWordResponse, n);
 		if (size)
-			*size = n * sizeof(struct ns1__ComplexTypeArrayDemo);
+			*size = n * sizeof(struct ns1__GetWordResponse);
 	}
 	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
 	if (!cp->ptr)
 		soap->error = SOAP_EOM;
-	return (struct ns1__ComplexTypeArrayDemo*)cp->ptr;
+	return (struct ns1__GetWordResponse*)cp->ptr;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__ComplexTypeArrayDemo(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__GetWordResponse(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
 {
 	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__ComplexTypeArrayDemo %p -> %p\n", q, p));
-	*(struct ns1__ComplexTypeArrayDemo*)p = *(struct ns1__ComplexTypeArrayDemo*)q;
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__GetWordResponse %p -> %p\n", q, p));
+	*(struct ns1__GetWordResponse*)p = *(struct ns1__GetWordResponse*)q;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__ComplexTypeArrayDemoResponse(struct soap *soap, struct ns1__ComplexTypeArrayDemoResponse *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__SendWord(struct soap *soap, struct ns1__SendWord *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	a->return_ = NULL;
+	soap_default_std__string(soap, &a->_word_USCOREa);
+	soap_default_std__string(soap, &a->_word_USCOREb);
+	soap_default_std__string(soap, &a->_lang_USCOREa);
+	soap_default_std__string(soap, &a->_lang_USCOREb);
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__ComplexTypeArrayDemoResponse(struct soap *soap, const struct ns1__ComplexTypeArrayDemoResponse *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__SendWord(struct soap *soap, const struct ns1__SendWord *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTostringArray(soap, &a->return_);
+	soap_embedded(soap, &a->_word_USCOREa, SOAP_TYPE_std__string);
+	soap_serialize_std__string(soap, &a->_word_USCOREa);
+	soap_embedded(soap, &a->_word_USCOREb, SOAP_TYPE_std__string);
+	soap_serialize_std__string(soap, &a->_word_USCOREb);
+	soap_embedded(soap, &a->_lang_USCOREa, SOAP_TYPE_std__string);
+	soap_serialize_std__string(soap, &a->_lang_USCOREa);
+	soap_embedded(soap, &a->_lang_USCOREb, SOAP_TYPE_std__string);
+	soap_serialize_std__string(soap, &a->_lang_USCOREb);
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__ComplexTypeArrayDemoResponse(struct soap *soap, const char *tag, int id, const struct ns1__ComplexTypeArrayDemoResponse *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__SendWord(struct soap *soap, const char *tag, int id, const struct ns1__SendWord *a, const char *type)
 {
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__SendWord), type))
 		return soap->error;
-	if (soap_out_PointerTostringArray(soap, "return", -1, &a->return_, ""))
+	if (soap_out_std__string(soap, "word_a", -1, &a->_word_USCOREa, ""))
+		return soap->error;
+	if (soap_out_std__string(soap, "word_b", -1, &a->_word_USCOREb, ""))
+		return soap->error;
+	if (soap_out_std__string(soap, "lang_a", -1, &a->_lang_USCOREa, ""))
+		return soap->error;
+	if (soap_out_std__string(soap, "lang_b", -1, &a->_lang_USCOREb, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-SOAP_FMAC3 struct ns1__ComplexTypeArrayDemoResponse * SOAP_FMAC4 soap_in_ns1__ComplexTypeArrayDemoResponse(struct soap *soap, const char *tag, struct ns1__ComplexTypeArrayDemoResponse *a, const char *type)
+SOAP_FMAC3 struct ns1__SendWord * SOAP_FMAC4 soap_in_ns1__SendWord(struct soap *soap, const char *tag, struct ns1__SendWord *a, const char *type)
 {
-	size_t soap_flag_return_ = 1;
+	size_t soap_flag__word_USCOREa = 1;
+	size_t soap_flag__word_USCOREb = 1;
+	size_t soap_flag__lang_USCOREa = 1;
+	size_t soap_flag__lang_USCOREb = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
-	a = (struct ns1__ComplexTypeArrayDemoResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse, sizeof(struct ns1__ComplexTypeArrayDemoResponse), 0, NULL, NULL, NULL);
+	a = (struct ns1__SendWord *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__SendWord, sizeof(struct ns1__SendWord), soap->type, soap->arrayType);
 	if (!a)
 		return NULL;
-	soap_default_ns1__ComplexTypeArrayDemoResponse(soap, a);
+	soap_default_ns1__SendWord(soap, a);
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_return_ && soap->error == SOAP_TAG_MISMATCH)
-				if (soap_in_PointerTostringArray(soap, "return", &a->return_, "xsd:string"))
-				{	soap_flag_return_--;
+			if (soap_flag__word_USCOREa && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_in_std__string(soap, NULL, &a->_word_USCOREa, "xsd:string"))
+				{	soap_flag__word_USCOREa--;
+					continue;
+				}
+			if (soap_flag__word_USCOREb && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_in_std__string(soap, NULL, &a->_word_USCOREb, "xsd:string"))
+				{	soap_flag__word_USCOREb--;
+					continue;
+				}
+			if (soap_flag__lang_USCOREa && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_in_std__string(soap, NULL, &a->_lang_USCOREa, "xsd:string"))
+				{	soap_flag__lang_USCOREa--;
+					continue;
+				}
+			if (soap_flag__lang_USCOREb && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_in_std__string(soap, NULL, &a->_lang_USCOREb, "xsd:string"))
+				{	soap_flag__lang_USCOREb--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -2921,412 +2166,103 @@ SOAP_FMAC3 struct ns1__ComplexTypeArrayDemoResponse * SOAP_FMAC4 soap_in_ns1__Co
 			return NULL;
 	}
 	else
-	{	a = (struct ns1__ComplexTypeArrayDemoResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse, 0, sizeof(struct ns1__ComplexTypeArrayDemoResponse), 0, NULL);
+	{	a = (struct ns1__SendWord *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__SendWord, 0, sizeof(struct ns1__SendWord), 0, soap_copy_ns1__SendWord);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__ComplexTypeArrayDemoResponse(struct soap *soap, const struct ns1__ComplexTypeArrayDemoResponse *a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse);
-	if (soap_out_ns1__ComplexTypeArrayDemoResponse(soap, tag?tag:"ns1:ComplexTypeArrayDemoResponse", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 struct ns1__ComplexTypeArrayDemoResponse * SOAP_FMAC4 soap_get_ns1__ComplexTypeArrayDemoResponse(struct soap *soap, struct ns1__ComplexTypeArrayDemoResponse *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_ns1__ComplexTypeArrayDemoResponse(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC1 struct ns1__ComplexTypeArrayDemoResponse * SOAP_FMAC2 soap_instantiate_ns1__ComplexTypeArrayDemoResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__ComplexTypeArrayDemoResponse(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse, n, soap_fdelete);
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	if (!cp)
-		return NULL;
-	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__ComplexTypeArrayDemoResponse);
-		if (size)
-			*size = sizeof(struct ns1__ComplexTypeArrayDemoResponse);
-	}
-	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__ComplexTypeArrayDemoResponse, n);
-		if (size)
-			*size = n * sizeof(struct ns1__ComplexTypeArrayDemoResponse);
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
-	if (!cp->ptr)
-		soap->error = SOAP_EOM;
-	return (struct ns1__ComplexTypeArrayDemoResponse*)cp->ptr;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__ComplexTypeArrayDemoResponse(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
-{
-	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__ComplexTypeArrayDemoResponse %p -> %p\n", q, p));
-	*(struct ns1__ComplexTypeArrayDemoResponse*)p = *(struct ns1__ComplexTypeArrayDemoResponse*)q;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__PrintComplexType(struct soap *soap, struct ns1__PrintComplexType *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-	a->obj = NULL;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__PrintComplexType(struct soap *soap, const struct ns1__PrintComplexType *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-	soap_serialize_PointerTons1__ComplexTypeDemo(soap, &a->obj);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__PrintComplexType(struct soap *soap, const char *tag, int id, const struct ns1__PrintComplexType *a, const char *type)
-{
-	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__PrintComplexType), type))
-		return soap->error;
-	if (soap_out_PointerTons1__ComplexTypeDemo(soap, "obj", -1, &a->obj, ""))
-		return soap->error;
-	return soap_element_end_out(soap, tag);
-}
-
-SOAP_FMAC3 struct ns1__PrintComplexType * SOAP_FMAC4 soap_in_ns1__PrintComplexType(struct soap *soap, const char *tag, struct ns1__PrintComplexType *a, const char *type)
-{
-	size_t soap_flag_obj = 1;
-	if (soap_element_begin_in(soap, tag, 0, type))
-		return NULL;
-	a = (struct ns1__PrintComplexType *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__PrintComplexType, sizeof(struct ns1__PrintComplexType), 0, NULL, NULL, NULL);
-	if (!a)
-		return NULL;
-	soap_default_ns1__PrintComplexType(soap, a);
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_obj && soap->error == SOAP_TAG_MISMATCH)
-				if (soap_in_PointerTons1__ComplexTypeDemo(soap, "obj", &a->obj, "ns1:ComplexTypeDemo"))
-				{	soap_flag_obj--;
-					continue;
-				}
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (struct ns1__PrintComplexType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__PrintComplexType, 0, sizeof(struct ns1__PrintComplexType), 0, NULL);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__PrintComplexType(struct soap *soap, const struct ns1__PrintComplexType *a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__PrintComplexType);
-	if (soap_out_ns1__PrintComplexType(soap, tag?tag:"ns1:PrintComplexType", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 struct ns1__PrintComplexType * SOAP_FMAC4 soap_get_ns1__PrintComplexType(struct soap *soap, struct ns1__PrintComplexType *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_ns1__PrintComplexType(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC1 struct ns1__PrintComplexType * SOAP_FMAC2 soap_instantiate_ns1__PrintComplexType(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__PrintComplexType(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__PrintComplexType, n, soap_fdelete);
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	if (!cp)
-		return NULL;
-	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__PrintComplexType);
-		if (size)
-			*size = sizeof(struct ns1__PrintComplexType);
-	}
-	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__PrintComplexType, n);
-		if (size)
-			*size = n * sizeof(struct ns1__PrintComplexType);
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
-	if (!cp->ptr)
-		soap->error = SOAP_EOM;
-	return (struct ns1__PrintComplexType*)cp->ptr;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__PrintComplexType(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
-{
-	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__PrintComplexType %p -> %p\n", q, p));
-	*(struct ns1__PrintComplexType*)p = *(struct ns1__PrintComplexType*)q;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__PrintComplexTypeResponse(struct soap *soap, struct ns1__PrintComplexTypeResponse *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_std__string(soap, &a->return_);
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__PrintComplexTypeResponse(struct soap *soap, const struct ns1__PrintComplexTypeResponse *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-	soap_embedded(soap, &a->return_, SOAP_TYPE_std__string);
-	soap_serialize_std__string(soap, &a->return_);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__PrintComplexTypeResponse(struct soap *soap, const char *tag, int id, const struct ns1__PrintComplexTypeResponse *a, const char *type)
-{
-	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__PrintComplexTypeResponse), type))
-		return soap->error;
-	if (soap_out_std__string(soap, "return", -1, &a->return_, ""))
-		return soap->error;
-	return soap_element_end_out(soap, tag);
-}
-
-SOAP_FMAC3 struct ns1__PrintComplexTypeResponse * SOAP_FMAC4 soap_in_ns1__PrintComplexTypeResponse(struct soap *soap, const char *tag, struct ns1__PrintComplexTypeResponse *a, const char *type)
-{
-	size_t soap_flag_return_ = 1;
-	if (soap_element_begin_in(soap, tag, 0, type))
-		return NULL;
-	a = (struct ns1__PrintComplexTypeResponse *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__PrintComplexTypeResponse, sizeof(struct ns1__PrintComplexTypeResponse), soap->type, soap->arrayType);
-	if (!a)
-		return NULL;
-	soap_default_ns1__PrintComplexTypeResponse(soap, a);
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_return_ && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-				if (soap_in_std__string(soap, "return", &a->return_, "xsd:string"))
-				{	soap_flag_return_--;
-					continue;
-				}
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (struct ns1__PrintComplexTypeResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__PrintComplexTypeResponse, 0, sizeof(struct ns1__PrintComplexTypeResponse), 0, soap_copy_ns1__PrintComplexTypeResponse);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_return_ > 0))
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag__word_USCOREa > 0 || soap_flag__word_USCOREb > 0 || soap_flag__lang_USCOREa > 0 || soap_flag__lang_USCOREb > 0))
 	{	soap->error = SOAP_OCCURS;
 		return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__PrintComplexTypeResponse(struct soap *soap, const struct ns1__PrintComplexTypeResponse *a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__SendWord(struct soap *soap, const struct ns1__SendWord *a, const char *tag, const char *type)
 {
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__PrintComplexTypeResponse);
-	if (soap_out_ns1__PrintComplexTypeResponse(soap, tag?tag:"ns1:PrintComplexTypeResponse", id, a, type))
+	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__SendWord);
+	if (soap_out_ns1__SendWord(soap, tag?tag:"ns1:SendWord", id, a, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 struct ns1__PrintComplexTypeResponse * SOAP_FMAC4 soap_get_ns1__PrintComplexTypeResponse(struct soap *soap, struct ns1__PrintComplexTypeResponse *p, const char *tag, const char *type)
+SOAP_FMAC3 struct ns1__SendWord * SOAP_FMAC4 soap_get_ns1__SendWord(struct soap *soap, struct ns1__SendWord *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns1__PrintComplexTypeResponse(soap, tag, p, type)))
+	if ((p = soap_in_ns1__SendWord(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-SOAP_FMAC1 struct ns1__PrintComplexTypeResponse * SOAP_FMAC2 soap_instantiate_ns1__PrintComplexTypeResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 struct ns1__SendWord * SOAP_FMAC2 soap_instantiate_ns1__SendWord(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__PrintComplexTypeResponse(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__PrintComplexTypeResponse, n, soap_fdelete);
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__SendWord(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__SendWord, n, soap_fdelete);
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
 	if (!cp)
 		return NULL;
 	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__PrintComplexTypeResponse);
+	{	cp->ptr = SOAP_NEW(struct ns1__SendWord);
 		if (size)
-			*size = sizeof(struct ns1__PrintComplexTypeResponse);
+			*size = sizeof(struct ns1__SendWord);
 	}
 	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__PrintComplexTypeResponse, n);
+	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__SendWord, n);
 		if (size)
-			*size = n * sizeof(struct ns1__PrintComplexTypeResponse);
+			*size = n * sizeof(struct ns1__SendWord);
 	}
 	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
 	if (!cp->ptr)
 		soap->error = SOAP_EOM;
-	return (struct ns1__PrintComplexTypeResponse*)cp->ptr;
+	return (struct ns1__SendWord*)cp->ptr;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__PrintComplexTypeResponse(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__SendWord(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
 {
 	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__PrintComplexTypeResponse %p -> %p\n", q, p));
-	*(struct ns1__PrintComplexTypeResponse*)p = *(struct ns1__PrintComplexTypeResponse*)q;
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__SendWord %p -> %p\n", q, p));
+	*(struct ns1__SendWord*)p = *(struct ns1__SendWord*)q;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__GetComplexType(struct soap *soap, struct ns1__GetComplexType *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__SendWordResponse(struct soap *soap, struct ns1__SendWordResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
+	a->_return_ = NULL;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__GetComplexType(struct soap *soap, const struct ns1__GetComplexType *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__SendWordResponse(struct soap *soap, const struct ns1__SendWordResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostringArray(soap, &a->_return_);
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__GetComplexType(struct soap *soap, const char *tag, int id, const struct ns1__GetComplexType *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__SendWordResponse(struct soap *soap, const char *tag, int id, const struct ns1__SendWordResponse *a, const char *type)
 {
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__GetComplexType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__SendWordResponse), type))
+		return soap->error;
+	if (soap_out_PointerTostringArray(soap, "return", -1, &a->_return_, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-SOAP_FMAC3 struct ns1__GetComplexType * SOAP_FMAC4 soap_in_ns1__GetComplexType(struct soap *soap, const char *tag, struct ns1__GetComplexType *a, const char *type)
+SOAP_FMAC3 struct ns1__SendWordResponse * SOAP_FMAC4 soap_in_ns1__SendWordResponse(struct soap *soap, const char *tag, struct ns1__SendWordResponse *a, const char *type)
 {
+	size_t soap_flag__return_ = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
-	a = (struct ns1__GetComplexType *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__GetComplexType, sizeof(struct ns1__GetComplexType), 0, NULL, NULL, NULL);
+	a = (struct ns1__SendWordResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__SendWordResponse, sizeof(struct ns1__SendWordResponse), 0, NULL, NULL, NULL);
 	if (!a)
 		return NULL;
-	soap_default_ns1__GetComplexType(soap, a);
+	soap_default_ns1__SendWordResponse(soap, a);
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (struct ns1__GetComplexType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__GetComplexType, 0, sizeof(struct ns1__GetComplexType), 0, NULL);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__GetComplexType(struct soap *soap, const struct ns1__GetComplexType *a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__GetComplexType);
-	if (soap_out_ns1__GetComplexType(soap, tag?tag:"ns1:GetComplexType", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 struct ns1__GetComplexType * SOAP_FMAC4 soap_get_ns1__GetComplexType(struct soap *soap, struct ns1__GetComplexType *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_ns1__GetComplexType(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC1 struct ns1__GetComplexType * SOAP_FMAC2 soap_instantiate_ns1__GetComplexType(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__GetComplexType(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__GetComplexType, n, soap_fdelete);
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	if (!cp)
-		return NULL;
-	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__GetComplexType);
-		if (size)
-			*size = sizeof(struct ns1__GetComplexType);
-	}
-	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__GetComplexType, n);
-		if (size)
-			*size = n * sizeof(struct ns1__GetComplexType);
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
-	if (!cp->ptr)
-		soap->error = SOAP_EOM;
-	return (struct ns1__GetComplexType*)cp->ptr;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__GetComplexType(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
-{
-	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__GetComplexType %p -> %p\n", q, p));
-	*(struct ns1__GetComplexType*)p = *(struct ns1__GetComplexType*)q;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__GetComplexTypeResponse(struct soap *soap, struct ns1__GetComplexTypeResponse *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-	a->return_ = NULL;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__GetComplexTypeResponse(struct soap *soap, const struct ns1__GetComplexTypeResponse *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-	soap_serialize_PointerTons1__ComplexTypeDemo(soap, &a->return_);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__GetComplexTypeResponse(struct soap *soap, const char *tag, int id, const struct ns1__GetComplexTypeResponse *a, const char *type)
-{
-	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__GetComplexTypeResponse), type))
-		return soap->error;
-	if (soap_out_PointerTons1__ComplexTypeDemo(soap, "return", -1, &a->return_, ""))
-		return soap->error;
-	return soap_element_end_out(soap, tag);
-}
-
-SOAP_FMAC3 struct ns1__GetComplexTypeResponse * SOAP_FMAC4 soap_in_ns1__GetComplexTypeResponse(struct soap *soap, const char *tag, struct ns1__GetComplexTypeResponse *a, const char *type)
-{
-	size_t soap_flag_return_ = 1;
-	if (soap_element_begin_in(soap, tag, 0, type))
-		return NULL;
-	a = (struct ns1__GetComplexTypeResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__GetComplexTypeResponse, sizeof(struct ns1__GetComplexTypeResponse), 0, NULL, NULL, NULL);
-	if (!a)
-		return NULL;
-	soap_default_ns1__GetComplexTypeResponse(soap, a);
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_return_ && soap->error == SOAP_TAG_MISMATCH)
-				if (soap_in_PointerTons1__ComplexTypeDemo(soap, "return", &a->return_, "ns1:ComplexTypeDemo"))
-				{	soap_flag_return_--;
+			if (soap_flag__return_ && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTostringArray(soap, NULL, &a->_return_, "xsd:string"))
+				{	soap_flag__return_--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -3340,57 +2276,285 @@ SOAP_FMAC3 struct ns1__GetComplexTypeResponse * SOAP_FMAC4 soap_in_ns1__GetCompl
 			return NULL;
 	}
 	else
-	{	a = (struct ns1__GetComplexTypeResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__GetComplexTypeResponse, 0, sizeof(struct ns1__GetComplexTypeResponse), 0, NULL);
+	{	a = (struct ns1__SendWordResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__SendWordResponse, 0, sizeof(struct ns1__SendWordResponse), 0, NULL);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__GetComplexTypeResponse(struct soap *soap, const struct ns1__GetComplexTypeResponse *a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__SendWordResponse(struct soap *soap, const struct ns1__SendWordResponse *a, const char *tag, const char *type)
 {
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__GetComplexTypeResponse);
-	if (soap_out_ns1__GetComplexTypeResponse(soap, tag?tag:"ns1:GetComplexTypeResponse", id, a, type))
+	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__SendWordResponse);
+	if (soap_out_ns1__SendWordResponse(soap, tag?tag:"ns1:SendWordResponse", id, a, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 struct ns1__GetComplexTypeResponse * SOAP_FMAC4 soap_get_ns1__GetComplexTypeResponse(struct soap *soap, struct ns1__GetComplexTypeResponse *p, const char *tag, const char *type)
+SOAP_FMAC3 struct ns1__SendWordResponse * SOAP_FMAC4 soap_get_ns1__SendWordResponse(struct soap *soap, struct ns1__SendWordResponse *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns1__GetComplexTypeResponse(soap, tag, p, type)))
+	if ((p = soap_in_ns1__SendWordResponse(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-SOAP_FMAC1 struct ns1__GetComplexTypeResponse * SOAP_FMAC2 soap_instantiate_ns1__GetComplexTypeResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 struct ns1__SendWordResponse * SOAP_FMAC2 soap_instantiate_ns1__SendWordResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__GetComplexTypeResponse(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
-	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__GetComplexTypeResponse, n, soap_fdelete);
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__SendWordResponse(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__SendWordResponse, n, soap_fdelete);
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
 	if (!cp)
 		return NULL;
 	if (n < 0)
-	{	cp->ptr = SOAP_NEW(struct ns1__GetComplexTypeResponse);
+	{	cp->ptr = SOAP_NEW(struct ns1__SendWordResponse);
 		if (size)
-			*size = sizeof(struct ns1__GetComplexTypeResponse);
+			*size = sizeof(struct ns1__SendWordResponse);
 	}
 	else
-	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__GetComplexTypeResponse, n);
+	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__SendWordResponse, n);
 		if (size)
-			*size = n * sizeof(struct ns1__GetComplexTypeResponse);
+			*size = n * sizeof(struct ns1__SendWordResponse);
 	}
 	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
 	if (!cp->ptr)
 		soap->error = SOAP_EOM;
-	return (struct ns1__GetComplexTypeResponse*)cp->ptr;
+	return (struct ns1__SendWordResponse*)cp->ptr;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__GetComplexTypeResponse(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__SendWordResponse(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
 {
 	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__GetComplexTypeResponse %p -> %p\n", q, p));
-	*(struct ns1__GetComplexTypeResponse*)p = *(struct ns1__GetComplexTypeResponse*)q;
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__SendWordResponse %p -> %p\n", q, p));
+	*(struct ns1__SendWordResponse*)p = *(struct ns1__SendWordResponse*)q;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__AccountAuth(struct soap *soap, struct ns1__AccountAuth *a)
+{
+	(void)soap; (void)a; /* appease -Wall -Werror */
+	soap_default_std__string(soap, &a->_email);
+	soap_default_std__string(soap, &a->_pass);
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__AccountAuth(struct soap *soap, const struct ns1__AccountAuth *a)
+{
+	(void)soap; (void)a; /* appease -Wall -Werror */
+#ifndef WITH_NOIDREF
+	soap_embedded(soap, &a->_email, SOAP_TYPE_std__string);
+	soap_serialize_std__string(soap, &a->_email);
+	soap_embedded(soap, &a->_pass, SOAP_TYPE_std__string);
+	soap_serialize_std__string(soap, &a->_pass);
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__AccountAuth(struct soap *soap, const char *tag, int id, const struct ns1__AccountAuth *a, const char *type)
+{
+	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__AccountAuth), type))
+		return soap->error;
+	if (soap_out_std__string(soap, "email", -1, &a->_email, ""))
+		return soap->error;
+	if (soap_out_std__string(soap, "pass", -1, &a->_pass, ""))
+		return soap->error;
+	return soap_element_end_out(soap, tag);
+}
+
+SOAP_FMAC3 struct ns1__AccountAuth * SOAP_FMAC4 soap_in_ns1__AccountAuth(struct soap *soap, const char *tag, struct ns1__AccountAuth *a, const char *type)
+{
+	size_t soap_flag__email = 1;
+	size_t soap_flag__pass = 1;
+	if (soap_element_begin_in(soap, tag, 0, type))
+		return NULL;
+	a = (struct ns1__AccountAuth *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__AccountAuth, sizeof(struct ns1__AccountAuth), soap->type, soap->arrayType);
+	if (!a)
+		return NULL;
+	soap_default_ns1__AccountAuth(soap, a);
+	if (soap->body && !*soap->href)
+	{
+		for (;;)
+		{	soap->error = SOAP_TAG_MISMATCH;
+			if (soap_flag__email && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_in_std__string(soap, NULL, &a->_email, "xsd:string"))
+				{	soap_flag__email--;
+					continue;
+				}
+			if (soap_flag__pass && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_in_std__string(soap, NULL, &a->_pass, "xsd:string"))
+				{	soap_flag__pass--;
+					continue;
+				}
+			if (soap->error == SOAP_TAG_MISMATCH)
+				soap->error = soap_ignore_element(soap);
+			if (soap->error == SOAP_NO_TAG)
+				break;
+			if (soap->error)
+				return NULL;
+		}
+		if (soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	else
+	{	a = (struct ns1__AccountAuth *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__AccountAuth, 0, sizeof(struct ns1__AccountAuth), 0, soap_copy_ns1__AccountAuth);
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag__email > 0 || soap_flag__pass > 0))
+	{	soap->error = SOAP_OCCURS;
+		return NULL;
+	}
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__AccountAuth(struct soap *soap, const struct ns1__AccountAuth *a, const char *tag, const char *type)
+{
+	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__AccountAuth);
+	if (soap_out_ns1__AccountAuth(soap, tag?tag:"ns1:AccountAuth", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 struct ns1__AccountAuth * SOAP_FMAC4 soap_get_ns1__AccountAuth(struct soap *soap, struct ns1__AccountAuth *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_ns1__AccountAuth(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 struct ns1__AccountAuth * SOAP_FMAC2 soap_instantiate_ns1__AccountAuth(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__AccountAuth(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__AccountAuth, n, soap_fdelete);
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = SOAP_NEW(struct ns1__AccountAuth);
+		if (size)
+			*size = sizeof(struct ns1__AccountAuth);
+	}
+	else
+	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__AccountAuth, n);
+		if (size)
+			*size = n * sizeof(struct ns1__AccountAuth);
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (struct ns1__AccountAuth*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__AccountAuth(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__AccountAuth %p -> %p\n", q, p));
+	*(struct ns1__AccountAuth*)p = *(struct ns1__AccountAuth*)q;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__AccountAuthResponse(struct soap *soap, struct ns1__AccountAuthResponse *a)
+{
+	(void)soap; (void)a; /* appease -Wall -Werror */
+	a->_return_ = NULL;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__AccountAuthResponse(struct soap *soap, const struct ns1__AccountAuthResponse *a)
+{
+	(void)soap; (void)a; /* appease -Wall -Werror */
+#ifndef WITH_NOIDREF
+	soap_serialize_PointerTostringArray(soap, &a->_return_);
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__AccountAuthResponse(struct soap *soap, const char *tag, int id, const struct ns1__AccountAuthResponse *a, const char *type)
+{
+	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns1__AccountAuthResponse), type))
+		return soap->error;
+	if (soap_out_PointerTostringArray(soap, "return", -1, &a->_return_, ""))
+		return soap->error;
+	return soap_element_end_out(soap, tag);
+}
+
+SOAP_FMAC3 struct ns1__AccountAuthResponse * SOAP_FMAC4 soap_in_ns1__AccountAuthResponse(struct soap *soap, const char *tag, struct ns1__AccountAuthResponse *a, const char *type)
+{
+	size_t soap_flag__return_ = 1;
+	if (soap_element_begin_in(soap, tag, 0, type))
+		return NULL;
+	a = (struct ns1__AccountAuthResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__AccountAuthResponse, sizeof(struct ns1__AccountAuthResponse), 0, NULL, NULL, NULL);
+	if (!a)
+		return NULL;
+	soap_default_ns1__AccountAuthResponse(soap, a);
+	if (soap->body && !*soap->href)
+	{
+		for (;;)
+		{	soap->error = SOAP_TAG_MISMATCH;
+			if (soap_flag__return_ && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTostringArray(soap, NULL, &a->_return_, "xsd:string"))
+				{	soap_flag__return_--;
+					continue;
+				}
+			if (soap->error == SOAP_TAG_MISMATCH)
+				soap->error = soap_ignore_element(soap);
+			if (soap->error == SOAP_NO_TAG)
+				break;
+			if (soap->error)
+				return NULL;
+		}
+		if (soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	else
+	{	a = (struct ns1__AccountAuthResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns1__AccountAuthResponse, 0, sizeof(struct ns1__AccountAuthResponse), 0, NULL);
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns1__AccountAuthResponse(struct soap *soap, const struct ns1__AccountAuthResponse *a, const char *tag, const char *type)
+{
+	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_ns1__AccountAuthResponse);
+	if (soap_out_ns1__AccountAuthResponse(soap, tag?tag:"ns1:AccountAuthResponse", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 struct ns1__AccountAuthResponse * SOAP_FMAC4 soap_get_ns1__AccountAuthResponse(struct soap *soap, struct ns1__AccountAuthResponse *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_ns1__AccountAuthResponse(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 struct ns1__AccountAuthResponse * SOAP_FMAC2 soap_instantiate_ns1__AccountAuthResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns1__AccountAuthResponse(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_ns1__AccountAuthResponse, n, soap_fdelete);
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = SOAP_NEW(struct ns1__AccountAuthResponse);
+		if (size)
+			*size = sizeof(struct ns1__AccountAuthResponse);
+	}
+	else
+	{	cp->ptr = SOAP_NEW_ARRAY(struct ns1__AccountAuthResponse, n);
+		if (size)
+			*size = n * sizeof(struct ns1__AccountAuthResponse);
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (struct ns1__AccountAuthResponse*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_ns1__AccountAuthResponse(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying struct ns1__AccountAuthResponse %p -> %p\n", q, p));
+	*(struct ns1__AccountAuthResponse*)p = *(struct ns1__AccountAuthResponse*)q;
 }
 
 #ifndef WITH_NOGLOBAL
@@ -3570,65 +2734,6 @@ SOAP_FMAC3 struct SOAP_ENV__Code ** SOAP_FMAC4 soap_get_PointerToSOAP_ENV__Code(
 
 #endif
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToComplexTypeDemoArray(struct soap *soap, ComplexTypeDemoArray *const*a)
-{
-#ifndef WITH_NOIDREF
-	if (*a)
-		(*a)->soap_serialize(soap);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToComplexTypeDemoArray(struct soap *soap, const char *tag, int id, ComplexTypeDemoArray *const*a, const char *type)
-{
-	id = soap_element_id(soap, tag, id, *a, (struct soap_array*)(void*)&(*a)->__ptr, 1, type, SOAP_TYPE_ComplexTypeDemoArray);
-	if (id < 0)
-		return soap->error;
-	return (*a)->soap_out(soap, tag, id, type);
-}
-
-SOAP_FMAC3 ComplexTypeDemoArray ** SOAP_FMAC4 soap_in_PointerToComplexTypeDemoArray(struct soap *soap, const char *tag, ComplexTypeDemoArray **a, const char *type)
-{
-	(void)type; /* appease -Wall -Werror */
-	
-	if (soap_element_begin_in(soap, tag, 1, NULL))
-		return NULL;
-	if (!a)
-		if (!(a = (ComplexTypeDemoArray **)soap_malloc(soap, sizeof(ComplexTypeDemoArray *))))
-			return NULL;
-	*a = NULL;
-	if (!soap->null && *soap->href != '#')
-	{	soap_revert(soap);
-		if (!(*a = (ComplexTypeDemoArray *)soap_instantiate_ComplexTypeDemoArray(soap, -1, soap->type, soap->arrayType, NULL)))
-			return NULL;
-		(*a)->soap_default(soap);
-		if (!(*a)->soap_in(soap, tag, NULL))
-			return NULL;
-	}
-	else
-	{	ComplexTypeDemoArray ** p = (ComplexTypeDemoArray **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_ComplexTypeDemoArray, sizeof(ComplexTypeDemoArray), 0);
-		a = p;
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToComplexTypeDemoArray(struct soap *soap, ComplexTypeDemoArray *const*a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_PointerToComplexTypeDemoArray);
-	if (soap_out_PointerToComplexTypeDemoArray(soap, tag?tag:"SOAP-ENC:Array", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 ComplexTypeDemoArray ** SOAP_FMAC4 soap_get_PointerToComplexTypeDemoArray(struct soap *soap, ComplexTypeDemoArray **p, const char *tag, const char *type)
-{
-	if ((p = soap_in_PointerToComplexTypeDemoArray(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTostringArray(struct soap *soap, stringArray *const*a)
 {
 #ifndef WITH_NOIDREF
@@ -3683,174 +2788,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTostringArray(struct soap *soap, strin
 SOAP_FMAC3 stringArray ** SOAP_FMAC4 soap_get_PointerTostringArray(struct soap *soap, stringArray **p, const char *tag, const char *type)
 {
 	if ((p = soap_in_PointerTostringArray(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToint(struct soap *soap, int *const*a)
-{
-#ifndef WITH_NOIDREF
-	soap_reference(soap, *a, SOAP_TYPE_int);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToint(struct soap *soap, const char *tag, int id, int *const*a, const char *type)
-{
-	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_int);
-	if (id < 0)
-		return soap->error;
-	return soap_out_int(soap, tag, id, *a, type);
-}
-
-SOAP_FMAC3 int ** SOAP_FMAC4 soap_in_PointerToint(struct soap *soap, const char *tag, int **a, const char *type)
-{
-	(void)type; /* appease -Wall -Werror */
-	
-	if (soap_element_begin_in(soap, tag, 1, NULL))
-		return NULL;
-	if (!a)
-		if (!(a = (int **)soap_malloc(soap, sizeof(int *))))
-			return NULL;
-	*a = NULL;
-	if (!soap->null && *soap->href != '#')
-	{	soap_revert(soap);
-		if (!(*a = soap_in_int(soap, tag, *a, type)))
-			return NULL;
-	}
-	else
-	{	a = (int **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_int, sizeof(int), 0);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToint(struct soap *soap, int *const*a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_PointerToint);
-	if (soap_out_PointerToint(soap, tag?tag:"int", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 int ** SOAP_FMAC4 soap_get_PointerToint(struct soap *soap, int **p, const char *tag, const char *type)
-{
-	if ((p = soap_in_PointerToint(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToPointerTons1__ComplexTypeDemo(struct soap *soap, ns1__ComplexTypeDemo **const*a)
-{
-#ifndef WITH_NOIDREF
-	if (!soap_reference(soap, *a, SOAP_TYPE_PointerTons1__ComplexTypeDemo))
-		soap_serialize_PointerTons1__ComplexTypeDemo(soap, *a);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToPointerTons1__ComplexTypeDemo(struct soap *soap, const char *tag, int id, ns1__ComplexTypeDemo **const*a, const char *type)
-{
-	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_PointerTons1__ComplexTypeDemo);
-	if (id < 0)
-		return soap->error;
-	return soap_out_PointerTons1__ComplexTypeDemo(soap, tag, id, *a, type);
-}
-
-SOAP_FMAC3 ns1__ComplexTypeDemo *** SOAP_FMAC4 soap_in_PointerToPointerTons1__ComplexTypeDemo(struct soap *soap, const char *tag, ns1__ComplexTypeDemo ***a, const char *type)
-{
-	(void)type; /* appease -Wall -Werror */
-	
-	if (soap_element_begin_in(soap, tag, 1, NULL))
-		return NULL;
-	if (!a)
-		if (!(a = (ns1__ComplexTypeDemo ***)soap_malloc(soap, sizeof(ns1__ComplexTypeDemo **))))
-			return NULL;
-	*a = NULL;
-	if (!soap->null && *soap->href != '#')
-	{	soap_revert(soap);
-		if (!(*a = soap_in_PointerTons1__ComplexTypeDemo(soap, tag, *a, type)))
-			return NULL;
-	}
-	else
-	{	a = (ns1__ComplexTypeDemo ***)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_PointerTons1__ComplexTypeDemo, sizeof(ns1__ComplexTypeDemo *), 1);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToPointerTons1__ComplexTypeDemo(struct soap *soap, ns1__ComplexTypeDemo **const*a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_PointerToPointerTons1__ComplexTypeDemo);
-	if (soap_out_PointerToPointerTons1__ComplexTypeDemo(soap, tag?tag:"ns1:ComplexTypeDemo", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 ns1__ComplexTypeDemo *** SOAP_FMAC4 soap_get_PointerToPointerTons1__ComplexTypeDemo(struct soap *soap, ns1__ComplexTypeDemo ***p, const char *tag, const char *type)
-{
-	if ((p = soap_in_PointerToPointerTons1__ComplexTypeDemo(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTons1__ComplexTypeDemo(struct soap *soap, ns1__ComplexTypeDemo *const*a)
-{
-#ifndef WITH_NOIDREF
-	if (!soap_reference(soap, *a, SOAP_TYPE_ns1__ComplexTypeDemo))
-		(*a)->soap_serialize(soap);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTons1__ComplexTypeDemo(struct soap *soap, const char *tag, int id, ns1__ComplexTypeDemo *const*a, const char *type)
-{
-	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_ns1__ComplexTypeDemo);
-	if (id < 0)
-		return soap->error;
-	return (*a)->soap_out(soap, tag, id, type);
-}
-
-SOAP_FMAC3 ns1__ComplexTypeDemo ** SOAP_FMAC4 soap_in_PointerTons1__ComplexTypeDemo(struct soap *soap, const char *tag, ns1__ComplexTypeDemo **a, const char *type)
-{
-	(void)type; /* appease -Wall -Werror */
-	
-	if (soap_element_begin_in(soap, tag, 1, NULL))
-		return NULL;
-	if (!a)
-		if (!(a = (ns1__ComplexTypeDemo **)soap_malloc(soap, sizeof(ns1__ComplexTypeDemo *))))
-			return NULL;
-	*a = NULL;
-	if (!soap->null && *soap->href != '#')
-	{	soap_revert(soap);
-		if (!(*a = (ns1__ComplexTypeDemo *)soap_instantiate_ns1__ComplexTypeDemo(soap, -1, soap->type, soap->arrayType, NULL)))
-			return NULL;
-		(*a)->soap_default(soap);
-		if (!(*a)->soap_in(soap, tag, NULL))
-			return NULL;
-	}
-	else
-	{	ns1__ComplexTypeDemo ** p = (ns1__ComplexTypeDemo **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_ns1__ComplexTypeDemo, sizeof(ns1__ComplexTypeDemo), 0);
-		a = p;
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTons1__ComplexTypeDemo(struct soap *soap, ns1__ComplexTypeDemo *const*a, const char *tag, const char *type)
-{
-	int id = soap_embed(soap, (void*)a, NULL, 0, SOAP_TYPE_PointerTons1__ComplexTypeDemo);
-	if (soap_out_PointerTons1__ComplexTypeDemo(soap, tag?tag:"ns1:ComplexTypeDemo", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 ns1__ComplexTypeDemo ** SOAP_FMAC4 soap_get_PointerTons1__ComplexTypeDemo(struct soap *soap, ns1__ComplexTypeDemo **p, const char *tag, const char *type)
-{
-	if ((p = soap_in_PointerTons1__ComplexTypeDemo(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;

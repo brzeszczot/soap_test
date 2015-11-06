@@ -14,26 +14,28 @@ compiling, linking, and/or using OpenSSL is allowed.
 #endif
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapClient.cpp ver 2.8.23 2015-10-30 14:54:04 GMT")
+SOAP_SOURCE_STAMP("@(#) soapClient.cpp ver 2.8.23 2015-11-06 13:32:36 GMT")
 
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__GetComplexType(struct soap *soap, const char *soap_endpoint, const char *soap_action, struct ns1__GetComplexTypeResponse &_param_1)
-{	struct ns1__GetComplexType soap_tmp_ns1__GetComplexType;
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__AccountAuth(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _email, std::string _pass, struct ns1__AccountAuthResponse &_param_1)
+{	struct ns1__AccountAuth soap_tmp_ns1__AccountAuth;
 	if (soap_endpoint == NULL)
-		soap_endpoint = "http://brzeszczot.net/open/php-wsdl-2.3/demo.php";
+		soap_endpoint = "http://brzeszczot.net/open/server.php";
 	if (soap_action == NULL)
-		soap_action = "http://brzeszczot.net/open/php-wsdl-2.3/GetComplexType";
+		soap_action = "http://brzeszczot.net/open/AccountAuth";
 	soap_begin(soap);
 	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
+	soap_tmp_ns1__AccountAuth._email = _email;
+	soap_tmp_ns1__AccountAuth._pass = _pass;
 	soap_serializeheader(soap);
-	soap_serialize_ns1__GetComplexType(soap, &soap_tmp_ns1__GetComplexType);
+	soap_serialize_ns1__AccountAuth(soap, &soap_tmp_ns1__AccountAuth);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__GetComplexType(soap, &soap_tmp_ns1__GetComplexType, "ns1:GetComplexType", NULL)
+		 || soap_put_ns1__AccountAuth(soap, &soap_tmp_ns1__AccountAuth, "ns1:AccountAuth", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -44,14 +46,14 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__GetComplexType(struct soap *soap, const
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__GetComplexType(soap, &soap_tmp_ns1__GetComplexType, "ns1:GetComplexType", NULL)
+	 || soap_put_ns1__AccountAuth(soap, &soap_tmp_ns1__AccountAuth, "ns1:AccountAuth", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
 	if (!&_param_1)
 		return soap_closesock(soap);
-	soap_default_ns1__GetComplexTypeResponse(soap, &_param_1);
+	soap_default_ns1__AccountAuthResponse(soap, &_param_1);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
@@ -59,7 +61,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__GetComplexType(struct soap *soap, const
 		return soap_closesock(soap);
 	if (soap_recv_fault(soap, 1))
 		return soap->error;
-	soap_get_ns1__GetComplexTypeResponse(soap, &_param_1, "", NULL);
+	soap_get_ns1__AccountAuthResponse(soap, &_param_1, "", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -69,25 +71,27 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__GetComplexType(struct soap *soap, const
 	return soap_closesock(soap);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__PrintComplexType(struct soap *soap, const char *soap_endpoint, const char *soap_action, ns1__ComplexTypeDemo *obj, std::string &return_)
-{	struct ns1__PrintComplexType soap_tmp_ns1__PrintComplexType;
-	struct ns1__PrintComplexTypeResponse *soap_tmp_ns1__PrintComplexTypeResponse;
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__SendWord(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _word_USCOREa, std::string _word_USCOREb, std::string _lang_USCOREa, std::string _lang_USCOREb, struct ns1__SendWordResponse &_param_2)
+{	struct ns1__SendWord soap_tmp_ns1__SendWord;
 	if (soap_endpoint == NULL)
-		soap_endpoint = "http://brzeszczot.net/open/php-wsdl-2.3/demo.php";
+		soap_endpoint = "http://brzeszczot.net/open/server.php";
 	if (soap_action == NULL)
-		soap_action = "http://brzeszczot.net/open/php-wsdl-2.3/PrintComplexType";
+		soap_action = "http://brzeszczot.net/open/SendWord";
 	soap_begin(soap);
 	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
-	soap_tmp_ns1__PrintComplexType.obj = obj;
+	soap_tmp_ns1__SendWord._word_USCOREa = _word_USCOREa;
+	soap_tmp_ns1__SendWord._word_USCOREb = _word_USCOREb;
+	soap_tmp_ns1__SendWord._lang_USCOREa = _lang_USCOREa;
+	soap_tmp_ns1__SendWord._lang_USCOREb = _lang_USCOREb;
 	soap_serializeheader(soap);
-	soap_serialize_ns1__PrintComplexType(soap, &soap_tmp_ns1__PrintComplexType);
+	soap_serialize_ns1__SendWord(soap, &soap_tmp_ns1__SendWord);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__PrintComplexType(soap, &soap_tmp_ns1__PrintComplexType, "ns1:PrintComplexType", NULL)
+		 || soap_put_ns1__SendWord(soap, &soap_tmp_ns1__SendWord, "ns1:SendWord", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -98,68 +102,14 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__PrintComplexType(struct soap *soap, con
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__PrintComplexType(soap, &soap_tmp_ns1__PrintComplexType, "ns1:PrintComplexType", NULL)
-	 || soap_body_end_out(soap)
-	 || soap_envelope_end_out(soap)
-	 || soap_end_send(soap))
-		return soap_closesock(soap);
-	if (!&return_)
-		return soap_closesock(soap);
-	soap_default_std__string(soap, &return_);
-	if (soap_begin_recv(soap)
-	 || soap_envelope_begin_in(soap)
-	 || soap_recv_header(soap)
-	 || soap_body_begin_in(soap))
-		return soap_closesock(soap);
-	if (soap_recv_fault(soap, 1))
-		return soap->error;
-	soap_tmp_ns1__PrintComplexTypeResponse = soap_get_ns1__PrintComplexTypeResponse(soap, NULL, "", NULL);
-	if (!soap_tmp_ns1__PrintComplexTypeResponse || soap->error)
-		return soap_recv_fault(soap, 0);
-	if (soap_body_end_in(soap)
-	 || soap_envelope_end_in(soap)
-	 || soap_end_recv(soap))
-		return soap_closesock(soap);
-	return_ = soap_tmp_ns1__PrintComplexTypeResponse->return_;
-	return soap_closesock(soap);
-}
-
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__ComplexTypeArrayDemo(struct soap *soap, const char *soap_endpoint, const char *soap_action, ComplexTypeDemoArray *arr, struct ns1__ComplexTypeArrayDemoResponse &_param_2)
-{	struct ns1__ComplexTypeArrayDemo soap_tmp_ns1__ComplexTypeArrayDemo;
-	if (soap_endpoint == NULL)
-		soap_endpoint = "http://brzeszczot.net/open/php-wsdl-2.3/demo.php";
-	if (soap_action == NULL)
-		soap_action = "http://brzeszczot.net/open/php-wsdl-2.3/ComplexTypeArrayDemo";
-	soap_begin(soap);
-	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
-	soap_tmp_ns1__ComplexTypeArrayDemo.arr = arr;
-	soap_serializeheader(soap);
-	soap_serialize_ns1__ComplexTypeArrayDemo(soap, &soap_tmp_ns1__ComplexTypeArrayDemo);
-	if (soap_begin_count(soap))
-		return soap->error;
-	if (soap->mode & SOAP_IO_LENGTH)
-	{	if (soap_envelope_begin_out(soap)
-		 || soap_putheader(soap)
-		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__ComplexTypeArrayDemo(soap, &soap_tmp_ns1__ComplexTypeArrayDemo, "ns1:ComplexTypeArrayDemo", NULL)
-		 || soap_body_end_out(soap)
-		 || soap_envelope_end_out(soap))
-			 return soap->error;
-	}
-	if (soap_end_count(soap))
-		return soap->error;
-	if (soap_connect(soap, soap_url(soap, soap_endpoint, NULL), soap_action)
-	 || soap_envelope_begin_out(soap)
-	 || soap_putheader(soap)
-	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__ComplexTypeArrayDemo(soap, &soap_tmp_ns1__ComplexTypeArrayDemo, "ns1:ComplexTypeArrayDemo", NULL)
+	 || soap_put_ns1__SendWord(soap, &soap_tmp_ns1__SendWord, "ns1:SendWord", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
 	if (!&_param_2)
 		return soap_closesock(soap);
-	soap_default_ns1__ComplexTypeArrayDemoResponse(soap, &_param_2);
+	soap_default_ns1__SendWordResponse(soap, &_param_2);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
@@ -167,7 +117,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__ComplexTypeArrayDemo(struct soap *soap,
 		return soap_closesock(soap);
 	if (soap_recv_fault(soap, 1))
 		return soap->error;
-	soap_get_ns1__ComplexTypeArrayDemoResponse(soap, &_param_2, "", NULL);
+	soap_get_ns1__SendWordResponse(soap, &_param_2, "", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)
@@ -177,25 +127,25 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__ComplexTypeArrayDemo(struct soap *soap,
 	return soap_closesock(soap);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__SayHello(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string name, std::string &return_)
-{	struct ns1__SayHello soap_tmp_ns1__SayHello;
-	struct ns1__SayHelloResponse *soap_tmp_ns1__SayHelloResponse;
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__GetWord(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _range, stringArray *_opt, struct ns1__GetWordResponse &_param_3)
+{	struct ns1__GetWord soap_tmp_ns1__GetWord;
 	if (soap_endpoint == NULL)
-		soap_endpoint = "http://brzeszczot.net/open/php-wsdl-2.3/demo.php";
+		soap_endpoint = "http://brzeszczot.net/open/server.php";
 	if (soap_action == NULL)
-		soap_action = "http://brzeszczot.net/open/php-wsdl-2.3/SayHello";
+		soap_action = "http://brzeszczot.net/open/GetWord";
 	soap_begin(soap);
 	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
-	soap_tmp_ns1__SayHello.name = name;
+	soap_tmp_ns1__GetWord._range = _range;
+	soap_tmp_ns1__GetWord._opt = _opt;
 	soap_serializeheader(soap);
-	soap_serialize_ns1__SayHello(soap, &soap_tmp_ns1__SayHello);
+	soap_serialize_ns1__GetWord(soap, &soap_tmp_ns1__GetWord);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__SayHello(soap, &soap_tmp_ns1__SayHello, "ns1:SayHello", NULL)
+		 || soap_put_ns1__GetWord(soap, &soap_tmp_ns1__GetWord, "ns1:GetWord", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -206,67 +156,14 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__SayHello(struct soap *soap, const char 
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__SayHello(soap, &soap_tmp_ns1__SayHello, "ns1:SayHello", NULL)
-	 || soap_body_end_out(soap)
-	 || soap_envelope_end_out(soap)
-	 || soap_end_send(soap))
-		return soap_closesock(soap);
-	if (!&return_)
-		return soap_closesock(soap);
-	soap_default_std__string(soap, &return_);
-	if (soap_begin_recv(soap)
-	 || soap_envelope_begin_in(soap)
-	 || soap_recv_header(soap)
-	 || soap_body_begin_in(soap))
-		return soap_closesock(soap);
-	if (soap_recv_fault(soap, 1))
-		return soap->error;
-	soap_tmp_ns1__SayHelloResponse = soap_get_ns1__SayHelloResponse(soap, NULL, "", NULL);
-	if (!soap_tmp_ns1__SayHelloResponse || soap->error)
-		return soap_recv_fault(soap, 0);
-	if (soap_body_end_in(soap)
-	 || soap_envelope_end_in(soap)
-	 || soap_end_recv(soap))
-		return soap_closesock(soap);
-	return_ = soap_tmp_ns1__SayHelloResponse->return_;
-	return soap_closesock(soap);
-}
-
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__DemoMethod(struct soap *soap, const char *soap_endpoint, const char *soap_action, struct ns1__DemoMethodResponse &_param_3)
-{	struct ns1__DemoMethod soap_tmp_ns1__DemoMethod;
-	if (soap_endpoint == NULL)
-		soap_endpoint = "http://brzeszczot.net/open/php-wsdl-2.3/demo.php";
-	if (soap_action == NULL)
-		soap_action = "http://brzeszczot.net/open/php-wsdl-2.3/DemoMethod";
-	soap_begin(soap);
-	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
-	soap_serializeheader(soap);
-	soap_serialize_ns1__DemoMethod(soap, &soap_tmp_ns1__DemoMethod);
-	if (soap_begin_count(soap))
-		return soap->error;
-	if (soap->mode & SOAP_IO_LENGTH)
-	{	if (soap_envelope_begin_out(soap)
-		 || soap_putheader(soap)
-		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__DemoMethod(soap, &soap_tmp_ns1__DemoMethod, "ns1:DemoMethod", NULL)
-		 || soap_body_end_out(soap)
-		 || soap_envelope_end_out(soap))
-			 return soap->error;
-	}
-	if (soap_end_count(soap))
-		return soap->error;
-	if (soap_connect(soap, soap_url(soap, soap_endpoint, NULL), soap_action)
-	 || soap_envelope_begin_out(soap)
-	 || soap_putheader(soap)
-	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__DemoMethod(soap, &soap_tmp_ns1__DemoMethod, "ns1:DemoMethod", NULL)
+	 || soap_put_ns1__GetWord(soap, &soap_tmp_ns1__GetWord, "ns1:GetWord", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
 		return soap_closesock(soap);
 	if (!&_param_3)
 		return soap_closesock(soap);
-	soap_default_ns1__DemoMethodResponse(soap, &_param_3);
+	soap_default_ns1__GetWordResponse(soap, &_param_3);
 	if (soap_begin_recv(soap)
 	 || soap_envelope_begin_in(soap)
 	 || soap_recv_header(soap)
@@ -274,7 +171,62 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__DemoMethod(struct soap *soap, const cha
 		return soap_closesock(soap);
 	if (soap_recv_fault(soap, 1))
 		return soap->error;
-	soap_get_ns1__DemoMethodResponse(soap, &_param_3, "", NULL);
+	soap_get_ns1__GetWordResponse(soap, &_param_3, "", NULL);
+	if (soap->error)
+		return soap_recv_fault(soap, 0);
+	if (soap_body_end_in(soap)
+	 || soap_envelope_end_in(soap)
+	 || soap_end_recv(soap))
+		return soap_closesock(soap);
+	return soap_closesock(soap);
+}
+
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__PlayWord(struct soap *soap, const char *soap_endpoint, const char *soap_action, int _id, int _value, int _direction, struct ns1__PlayWordResponse &_param_4)
+{	struct ns1__PlayWord soap_tmp_ns1__PlayWord;
+	if (soap_endpoint == NULL)
+		soap_endpoint = "http://brzeszczot.net/open/server.php";
+	if (soap_action == NULL)
+		soap_action = "http://brzeszczot.net/open/PlayWord";
+	soap_begin(soap);
+	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
+	soap_tmp_ns1__PlayWord._id = _id;
+	soap_tmp_ns1__PlayWord._value = _value;
+	soap_tmp_ns1__PlayWord._direction = _direction;
+	soap_serializeheader(soap);
+	soap_serialize_ns1__PlayWord(soap, &soap_tmp_ns1__PlayWord);
+	if (soap_begin_count(soap))
+		return soap->error;
+	if (soap->mode & SOAP_IO_LENGTH)
+	{	if (soap_envelope_begin_out(soap)
+		 || soap_putheader(soap)
+		 || soap_body_begin_out(soap)
+		 || soap_put_ns1__PlayWord(soap, &soap_tmp_ns1__PlayWord, "ns1:PlayWord", NULL)
+		 || soap_body_end_out(soap)
+		 || soap_envelope_end_out(soap))
+			 return soap->error;
+	}
+	if (soap_end_count(soap))
+		return soap->error;
+	if (soap_connect(soap, soap_url(soap, soap_endpoint, NULL), soap_action)
+	 || soap_envelope_begin_out(soap)
+	 || soap_putheader(soap)
+	 || soap_body_begin_out(soap)
+	 || soap_put_ns1__PlayWord(soap, &soap_tmp_ns1__PlayWord, "ns1:PlayWord", NULL)
+	 || soap_body_end_out(soap)
+	 || soap_envelope_end_out(soap)
+	 || soap_end_send(soap))
+		return soap_closesock(soap);
+	if (!&_param_4)
+		return soap_closesock(soap);
+	soap_default_ns1__PlayWordResponse(soap, &_param_4);
+	if (soap_begin_recv(soap)
+	 || soap_envelope_begin_in(soap)
+	 || soap_recv_header(soap)
+	 || soap_body_begin_in(soap))
+		return soap_closesock(soap);
+	if (soap_recv_fault(soap, 1))
+		return soap->error;
+	soap_get_ns1__PlayWordResponse(soap, &_param_4, "", NULL);
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)

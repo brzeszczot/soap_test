@@ -14,7 +14,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 #endif
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapServer.cpp ver 2.8.23 2015-10-30 14:54:04 GMT")
+SOAP_SOURCE_STAMP("@(#) soapServer.cpp ver 2.8.23 2015-11-06 13:32:36 GMT")
 
 
 extern "C" SOAP_FMAC5 int SOAP_FMAC6 soap_serve(struct soap *soap)
@@ -56,44 +56,42 @@ extern "C" SOAP_FMAC5 int SOAP_FMAC6 soap_serve(struct soap *soap)
 extern "C" SOAP_FMAC5 int SOAP_FMAC6 soap_serve_request(struct soap *soap)
 {
 	soap_peek_element(soap);
-	if (!soap_match_tag(soap, soap->tag, "ns1:GetComplexType"))
-		return soap_serve_ns1__GetComplexType(soap);
-	if (!soap_match_tag(soap, soap->tag, "ns1:PrintComplexType"))
-		return soap_serve_ns1__PrintComplexType(soap);
-	if (!soap_match_tag(soap, soap->tag, "ns1:ComplexTypeArrayDemo"))
-		return soap_serve_ns1__ComplexTypeArrayDemo(soap);
-	if (!soap_match_tag(soap, soap->tag, "ns1:SayHello"))
-		return soap_serve_ns1__SayHello(soap);
-	if (!soap_match_tag(soap, soap->tag, "ns1:DemoMethod"))
-		return soap_serve_ns1__DemoMethod(soap);
+	if (!soap_match_tag(soap, soap->tag, "ns1:AccountAuth"))
+		return soap_serve_ns1__AccountAuth(soap);
+	if (!soap_match_tag(soap, soap->tag, "ns1:SendWord"))
+		return soap_serve_ns1__SendWord(soap);
+	if (!soap_match_tag(soap, soap->tag, "ns1:GetWord"))
+		return soap_serve_ns1__GetWord(soap);
+	if (!soap_match_tag(soap, soap->tag, "ns1:PlayWord"))
+		return soap_serve_ns1__PlayWord(soap);
 	return soap->error = SOAP_NO_METHOD;
 }
 #endif
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__GetComplexType(struct soap *soap)
-{	struct ns1__GetComplexType soap_tmp_ns1__GetComplexType;
-	struct ns1__GetComplexTypeResponse _param_1;
-	soap_default_ns1__GetComplexTypeResponse(soap, &_param_1);
-	soap_default_ns1__GetComplexType(soap, &soap_tmp_ns1__GetComplexType);
-	if (!soap_get_ns1__GetComplexType(soap, &soap_tmp_ns1__GetComplexType, "ns1:GetComplexType", NULL))
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__AccountAuth(struct soap *soap)
+{	struct ns1__AccountAuth soap_tmp_ns1__AccountAuth;
+	struct ns1__AccountAuthResponse _param_1;
+	soap_default_ns1__AccountAuthResponse(soap, &_param_1);
+	soap_default_ns1__AccountAuth(soap, &soap_tmp_ns1__AccountAuth);
+	if (!soap_get_ns1__AccountAuth(soap, &soap_tmp_ns1__AccountAuth, "ns1:AccountAuth", NULL))
 		return soap->error;
 	if (soap_body_end_in(soap)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = ns1__GetComplexType(soap, _param_1);
+	soap->error = ns1__AccountAuth(soap, soap_tmp_ns1__AccountAuth._email, soap_tmp_ns1__AccountAuth._pass, _param_1);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
 	soap_serializeheader(soap);
-	soap_serialize_ns1__GetComplexTypeResponse(soap, &_param_1);
+	soap_serialize_ns1__AccountAuthResponse(soap, &_param_1);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__GetComplexTypeResponse(soap, &_param_1, "ns1:GetComplexTypeResponse", NULL)
+		 || soap_put_ns1__AccountAuthResponse(soap, &_param_1, "ns1:AccountAuthResponse", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -103,7 +101,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__GetComplexType(struct soap *soap)
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__GetComplexTypeResponse(soap, &_param_1, "ns1:GetComplexTypeResponse", NULL)
+	 || soap_put_ns1__AccountAuthResponse(soap, &_param_1, "ns1:AccountAuthResponse", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
@@ -111,30 +109,30 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__GetComplexType(struct soap *soap)
 	return soap_closesock(soap);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__PrintComplexType(struct soap *soap)
-{	struct ns1__PrintComplexType soap_tmp_ns1__PrintComplexType;
-	struct ns1__PrintComplexTypeResponse soap_tmp_ns1__PrintComplexTypeResponse;
-	soap_default_ns1__PrintComplexTypeResponse(soap, &soap_tmp_ns1__PrintComplexTypeResponse);
-	soap_default_ns1__PrintComplexType(soap, &soap_tmp_ns1__PrintComplexType);
-	if (!soap_get_ns1__PrintComplexType(soap, &soap_tmp_ns1__PrintComplexType, "ns1:PrintComplexType", NULL))
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__SendWord(struct soap *soap)
+{	struct ns1__SendWord soap_tmp_ns1__SendWord;
+	struct ns1__SendWordResponse _param_2;
+	soap_default_ns1__SendWordResponse(soap, &_param_2);
+	soap_default_ns1__SendWord(soap, &soap_tmp_ns1__SendWord);
+	if (!soap_get_ns1__SendWord(soap, &soap_tmp_ns1__SendWord, "ns1:SendWord", NULL))
 		return soap->error;
 	if (soap_body_end_in(soap)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = ns1__PrintComplexType(soap, soap_tmp_ns1__PrintComplexType.obj, soap_tmp_ns1__PrintComplexTypeResponse.return_);
+	soap->error = ns1__SendWord(soap, soap_tmp_ns1__SendWord._word_USCOREa, soap_tmp_ns1__SendWord._word_USCOREb, soap_tmp_ns1__SendWord._lang_USCOREa, soap_tmp_ns1__SendWord._lang_USCOREb, _param_2);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
 	soap_serializeheader(soap);
-	soap_serialize_ns1__PrintComplexTypeResponse(soap, &soap_tmp_ns1__PrintComplexTypeResponse);
+	soap_serialize_ns1__SendWordResponse(soap, &_param_2);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__PrintComplexTypeResponse(soap, &soap_tmp_ns1__PrintComplexTypeResponse, "ns1:PrintComplexTypeResponse", NULL)
+		 || soap_put_ns1__SendWordResponse(soap, &_param_2, "ns1:SendWordResponse", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -144,7 +142,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__PrintComplexType(struct soap *soap)
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__PrintComplexTypeResponse(soap, &soap_tmp_ns1__PrintComplexTypeResponse, "ns1:PrintComplexTypeResponse", NULL)
+	 || soap_put_ns1__SendWordResponse(soap, &_param_2, "ns1:SendWordResponse", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
@@ -152,30 +150,30 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__PrintComplexType(struct soap *soap)
 	return soap_closesock(soap);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__ComplexTypeArrayDemo(struct soap *soap)
-{	struct ns1__ComplexTypeArrayDemo soap_tmp_ns1__ComplexTypeArrayDemo;
-	struct ns1__ComplexTypeArrayDemoResponse _param_2;
-	soap_default_ns1__ComplexTypeArrayDemoResponse(soap, &_param_2);
-	soap_default_ns1__ComplexTypeArrayDemo(soap, &soap_tmp_ns1__ComplexTypeArrayDemo);
-	if (!soap_get_ns1__ComplexTypeArrayDemo(soap, &soap_tmp_ns1__ComplexTypeArrayDemo, "ns1:ComplexTypeArrayDemo", NULL))
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__GetWord(struct soap *soap)
+{	struct ns1__GetWord soap_tmp_ns1__GetWord;
+	struct ns1__GetWordResponse _param_3;
+	soap_default_ns1__GetWordResponse(soap, &_param_3);
+	soap_default_ns1__GetWord(soap, &soap_tmp_ns1__GetWord);
+	if (!soap_get_ns1__GetWord(soap, &soap_tmp_ns1__GetWord, "ns1:GetWord", NULL))
 		return soap->error;
 	if (soap_body_end_in(soap)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = ns1__ComplexTypeArrayDemo(soap, soap_tmp_ns1__ComplexTypeArrayDemo.arr, _param_2);
+	soap->error = ns1__GetWord(soap, soap_tmp_ns1__GetWord._range, soap_tmp_ns1__GetWord._opt, _param_3);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
 	soap_serializeheader(soap);
-	soap_serialize_ns1__ComplexTypeArrayDemoResponse(soap, &_param_2);
+	soap_serialize_ns1__GetWordResponse(soap, &_param_3);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__ComplexTypeArrayDemoResponse(soap, &_param_2, "ns1:ComplexTypeArrayDemoResponse", NULL)
+		 || soap_put_ns1__GetWordResponse(soap, &_param_3, "ns1:GetWordResponse", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -185,7 +183,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__ComplexTypeArrayDemo(struct soap *soap
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__ComplexTypeArrayDemoResponse(soap, &_param_2, "ns1:ComplexTypeArrayDemoResponse", NULL)
+	 || soap_put_ns1__GetWordResponse(soap, &_param_3, "ns1:GetWordResponse", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))
@@ -193,30 +191,30 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__ComplexTypeArrayDemo(struct soap *soap
 	return soap_closesock(soap);
 }
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__SayHello(struct soap *soap)
-{	struct ns1__SayHello soap_tmp_ns1__SayHello;
-	struct ns1__SayHelloResponse soap_tmp_ns1__SayHelloResponse;
-	soap_default_ns1__SayHelloResponse(soap, &soap_tmp_ns1__SayHelloResponse);
-	soap_default_ns1__SayHello(soap, &soap_tmp_ns1__SayHello);
-	if (!soap_get_ns1__SayHello(soap, &soap_tmp_ns1__SayHello, "ns1:SayHello", NULL))
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__PlayWord(struct soap *soap)
+{	struct ns1__PlayWord soap_tmp_ns1__PlayWord;
+	struct ns1__PlayWordResponse _param_4;
+	soap_default_ns1__PlayWordResponse(soap, &_param_4);
+	soap_default_ns1__PlayWord(soap, &soap_tmp_ns1__PlayWord);
+	if (!soap_get_ns1__PlayWord(soap, &soap_tmp_ns1__PlayWord, "ns1:PlayWord", NULL))
 		return soap->error;
 	if (soap_body_end_in(soap)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = ns1__SayHello(soap, soap_tmp_ns1__SayHello.name, soap_tmp_ns1__SayHelloResponse.return_);
+	soap->error = ns1__PlayWord(soap, soap_tmp_ns1__PlayWord._id, soap_tmp_ns1__PlayWord._value, soap_tmp_ns1__PlayWord._direction, _param_4);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
 	soap_serializeheader(soap);
-	soap_serialize_ns1__SayHelloResponse(soap, &soap_tmp_ns1__SayHelloResponse);
+	soap_serialize_ns1__PlayWordResponse(soap, &_param_4);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__SayHelloResponse(soap, &soap_tmp_ns1__SayHelloResponse, "ns1:SayHelloResponse", NULL)
+		 || soap_put_ns1__PlayWordResponse(soap, &_param_4, "ns1:PlayWordResponse", NULL)
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -226,48 +224,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__SayHello(struct soap *soap)
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__SayHelloResponse(soap, &soap_tmp_ns1__SayHelloResponse, "ns1:SayHelloResponse", NULL)
-	 || soap_body_end_out(soap)
-	 || soap_envelope_end_out(soap)
-	 || soap_end_send(soap))
-		return soap->error;
-	return soap_closesock(soap);
-}
-
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__DemoMethod(struct soap *soap)
-{	struct ns1__DemoMethod soap_tmp_ns1__DemoMethod;
-	struct ns1__DemoMethodResponse _param_3;
-	soap_default_ns1__DemoMethodResponse(soap, &_param_3);
-	soap_default_ns1__DemoMethod(soap, &soap_tmp_ns1__DemoMethod);
-	if (!soap_get_ns1__DemoMethod(soap, &soap_tmp_ns1__DemoMethod, "ns1:DemoMethod", NULL))
-		return soap->error;
-	if (soap_body_end_in(soap)
-	 || soap_envelope_end_in(soap)
-	 || soap_end_recv(soap))
-		return soap->error;
-	soap->error = ns1__DemoMethod(soap, _param_3);
-	if (soap->error)
-		return soap->error;
-	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
-	soap_serializeheader(soap);
-	soap_serialize_ns1__DemoMethodResponse(soap, &_param_3);
-	if (soap_begin_count(soap))
-		return soap->error;
-	if (soap->mode & SOAP_IO_LENGTH)
-	{	if (soap_envelope_begin_out(soap)
-		 || soap_putheader(soap)
-		 || soap_body_begin_out(soap)
-		 || soap_put_ns1__DemoMethodResponse(soap, &_param_3, "ns1:DemoMethodResponse", NULL)
-		 || soap_body_end_out(soap)
-		 || soap_envelope_end_out(soap))
-			 return soap->error;
-	};
-	if (soap_end_count(soap)
-	 || soap_response(soap, SOAP_OK)
-	 || soap_envelope_begin_out(soap)
-	 || soap_putheader(soap)
-	 || soap_body_begin_out(soap)
-	 || soap_put_ns1__DemoMethodResponse(soap, &_param_3, "ns1:DemoMethodResponse", NULL)
+	 || soap_put_ns1__PlayWordResponse(soap, &_param_4, "ns1:PlayWordResponse", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))

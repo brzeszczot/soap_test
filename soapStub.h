@@ -11,7 +11,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 #ifndef soapStub_H
 #define soapStub_H
 #include <vector>
-#define SOAP_NAMESPACE_OF_ns1	"http://brzeszczot.net/open/php-wsdl-2.3/"
+#define SOAP_NAMESPACE_OF_ns1	"http://brzeszczot.net/open/"
 #include "stdsoap2.h"
 #if GSOAP_VERSION != 20823
 # error "GSOAP VERSION 20823 MISMATCH IN GENERATED CODE VERSUS LIBRARY CODE: PLEASE REINSTALL PACKAGE"
@@ -47,32 +47,8 @@ compiling, linking, and/or using OpenSSL is allowed.
 
 #endif
 
-#ifndef SOAP_TYPE_ns1__ComplexTypeDemo
-#define SOAP_TYPE_ns1__ComplexTypeDemo (8)
-/* ns1:ComplexTypeDemo */
-class SOAP_CMAC ns1__ComplexTypeDemo
-{
-public:
-	std::string *StringA;	/* required element of type xsd:string */
-	std::string *StringB;	/* required element of type xsd:string */
-	int Integer;	/* required element of type xsd:int */
-	bool Boolean;	/* required element of type xsd:boolean */
-	struct soap *soap;	/* transient */
-public:
-	virtual int soap_type() const { return 8; } /* = unique type id SOAP_TYPE_ns1__ComplexTypeDemo */
-	virtual void soap_default(struct soap*);
-	virtual void soap_serialize(struct soap*) const;
-	virtual int soap_put(struct soap*, const char*, const char*) const;
-	virtual int soap_out(struct soap*, const char*, int, const char*) const;
-	virtual void *soap_get(struct soap*, const char*, const char*);
-	virtual void *soap_in(struct soap*, const char*, const char*);
-	         ns1__ComplexTypeDemo() { ns1__ComplexTypeDemo::soap_default(NULL); }
-	virtual ~ns1__ComplexTypeDemo() { }
-};
-#endif
-
 #ifndef SOAP_TYPE_stringArray
-#define SOAP_TYPE_stringArray (9)
+#define SOAP_TYPE_stringArray (8)
 /* SOAP encoded array of xsd:string schema type: */
 class SOAP_CMAC stringArray
 {
@@ -81,7 +57,7 @@ public:
 	int __size;
 	struct soap *soap;	/* transient */
 public:
-	virtual int soap_type() const { return 9; } /* = unique type id SOAP_TYPE_stringArray */
+	virtual int soap_type() const { return 8; } /* = unique type id SOAP_TYPE_stringArray */
 	virtual void soap_default(struct soap*);
 	virtual void soap_serialize(struct soap*) const;
 	virtual int soap_put(struct soap*, const char*, const char*) const;
@@ -93,173 +69,118 @@ public:
 };
 #endif
 
-#ifndef SOAP_TYPE_ComplexTypeDemoArray
-#define SOAP_TYPE_ComplexTypeDemoArray (10)
-/* SOAP encoded array of ns1:ComplexTypeDemo schema type: */
-class SOAP_CMAC ComplexTypeDemoArray
+#ifndef SOAP_TYPE_ns1__AccountAuthResponse
+#define SOAP_TYPE_ns1__AccountAuthResponse (12)
+/* ns1:AccountAuthResponse */
+struct ns1__AccountAuthResponse
 {
 public:
-	ns1__ComplexTypeDemo **__ptr;
-	int __size;
-	struct soap *soap;	/* transient */
+	stringArray *_return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* optional element of type ArrayOfstring */
 public:
-	virtual int soap_type() const { return 10; } /* = unique type id SOAP_TYPE_ComplexTypeDemoArray */
-	virtual void soap_default(struct soap*);
-	virtual void soap_serialize(struct soap*) const;
-	virtual int soap_put(struct soap*, const char*, const char*) const;
-	virtual int soap_out(struct soap*, const char*, int, const char*) const;
-	virtual void *soap_get(struct soap*, const char*, const char*);
-	virtual void *soap_in(struct soap*, const char*, const char*);
-	         ComplexTypeDemoArray() { ComplexTypeDemoArray::soap_default(NULL); }
-	virtual ~ComplexTypeDemoArray() { }
+	int soap_type() const { return 12; } /* = unique type id SOAP_TYPE_ns1__AccountAuthResponse */
 };
 #endif
 
-#ifndef SOAP_TYPE_arrayOfInt
-#define SOAP_TYPE_arrayOfInt (11)
-/* SOAP encoded array of xsd:int schema type: */
-class SOAP_CMAC arrayOfInt
+#ifndef SOAP_TYPE_ns1__AccountAuth
+#define SOAP_TYPE_ns1__AccountAuth (16)
+/* ns1:AccountAuth */
+struct ns1__AccountAuth
 {
 public:
-	int *__ptr;
-	int __size;
-	struct soap *soap;	/* transient */
+	std::string _email;	/* required element of type xsd:string */
+	std::string _pass;	/* required element of type xsd:string */
 public:
-	virtual int soap_type() const { return 11; } /* = unique type id SOAP_TYPE_arrayOfInt */
-	virtual void soap_default(struct soap*);
-	virtual void soap_serialize(struct soap*) const;
-	virtual int soap_put(struct soap*, const char*, const char*) const;
-	virtual int soap_out(struct soap*, const char*, int, const char*) const;
-	virtual void *soap_get(struct soap*, const char*, const char*);
-	virtual void *soap_in(struct soap*, const char*, const char*);
-	         arrayOfInt() { arrayOfInt::soap_default(NULL); }
-	virtual ~arrayOfInt() { }
+	int soap_type() const { return 16; } /* = unique type id SOAP_TYPE_ns1__AccountAuth */
 };
 #endif
 
-#ifndef SOAP_TYPE_ns1__GetComplexTypeResponse
-#define SOAP_TYPE_ns1__GetComplexTypeResponse (19)
-/* ns1:GetComplexTypeResponse */
-struct ns1__GetComplexTypeResponse
+#ifndef SOAP_TYPE_ns1__SendWordResponse
+#define SOAP_TYPE_ns1__SendWordResponse (17)
+/* ns1:SendWordResponse */
+struct ns1__SendWordResponse
 {
 public:
-	ns1__ComplexTypeDemo *return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* optional element of type ns1:ComplexTypeDemo */
+	stringArray *_return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* optional element of type ArrayOfstring */
 public:
-	int soap_type() const { return 19; } /* = unique type id SOAP_TYPE_ns1__GetComplexTypeResponse */
+	int soap_type() const { return 17; } /* = unique type id SOAP_TYPE_ns1__SendWordResponse */
 };
 #endif
 
-#ifndef SOAP_TYPE_ns1__GetComplexType
-#define SOAP_TYPE_ns1__GetComplexType (22)
-/* ns1:GetComplexType */
-struct ns1__GetComplexType
+#ifndef SOAP_TYPE_ns1__SendWord
+#define SOAP_TYPE_ns1__SendWord (20)
+/* ns1:SendWord */
+struct ns1__SendWord
 {
 public:
-	int soap_type() const { return 22; } /* = unique type id SOAP_TYPE_ns1__GetComplexType */
+	std::string _word_USCOREa;	/* required element of type xsd:string */
+	std::string _word_USCOREb;	/* required element of type xsd:string */
+	std::string _lang_USCOREa;	/* required element of type xsd:string */
+	std::string _lang_USCOREb;	/* required element of type xsd:string */
+public:
+	int soap_type() const { return 20; } /* = unique type id SOAP_TYPE_ns1__SendWord */
 };
 #endif
 
-#ifndef SOAP_TYPE_ns1__PrintComplexTypeResponse
-#define SOAP_TYPE_ns1__PrintComplexTypeResponse (25)
-/* ns1:PrintComplexTypeResponse */
-struct ns1__PrintComplexTypeResponse
+#ifndef SOAP_TYPE_ns1__GetWordResponse
+#define SOAP_TYPE_ns1__GetWordResponse (21)
+/* ns1:GetWordResponse */
+struct ns1__GetWordResponse
 {
 public:
-	std::string return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type xsd:string */
+	stringArray *_return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* optional element of type ArrayOfstring */
 public:
-	int soap_type() const { return 25; } /* = unique type id SOAP_TYPE_ns1__PrintComplexTypeResponse */
+	int soap_type() const { return 21; } /* = unique type id SOAP_TYPE_ns1__GetWordResponse */
 };
 #endif
 
-#ifndef SOAP_TYPE_ns1__PrintComplexType
-#define SOAP_TYPE_ns1__PrintComplexType (26)
-/* ns1:PrintComplexType */
-struct ns1__PrintComplexType
+#ifndef SOAP_TYPE_ns1__GetWord
+#define SOAP_TYPE_ns1__GetWord (24)
+/* ns1:GetWord */
+struct ns1__GetWord
 {
 public:
-	ns1__ComplexTypeDemo *obj;	/* optional element of type ns1:ComplexTypeDemo */
+	std::string _range;	/* required element of type xsd:string */
+	stringArray *_opt;	/* optional element of type ArrayOfstring */
 public:
-	int soap_type() const { return 26; } /* = unique type id SOAP_TYPE_ns1__PrintComplexType */
+	int soap_type() const { return 24; } /* = unique type id SOAP_TYPE_ns1__GetWord */
 };
 #endif
 
-#ifndef SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse
-#define SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse (27)
-/* ns1:ComplexTypeArrayDemoResponse */
-struct ns1__ComplexTypeArrayDemoResponse
+#ifndef SOAP_TYPE_ns1__PlayWordResponse
+#define SOAP_TYPE_ns1__PlayWordResponse (25)
+/* ns1:PlayWordResponse */
+struct ns1__PlayWordResponse
 {
 public:
-	stringArray *return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* optional element of type ArrayOfstring */
+	stringArray *_return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* optional element of type ArrayOfstring */
 public:
-	int soap_type() const { return 27; } /* = unique type id SOAP_TYPE_ns1__ComplexTypeArrayDemoResponse */
+	int soap_type() const { return 25; } /* = unique type id SOAP_TYPE_ns1__PlayWordResponse */
 };
 #endif
 
-#ifndef SOAP_TYPE_ns1__ComplexTypeArrayDemo
-#define SOAP_TYPE_ns1__ComplexTypeArrayDemo (32)
-/* ns1:ComplexTypeArrayDemo */
-struct ns1__ComplexTypeArrayDemo
+#ifndef SOAP_TYPE_ns1__PlayWord
+#define SOAP_TYPE_ns1__PlayWord (28)
+/* ns1:PlayWord */
+struct ns1__PlayWord
 {
 public:
-	ComplexTypeDemoArray *arr;	/* optional element of type ArrayOfComplexTypeDemo */
+	int _id;	/* required element of type xsd:int */
+	int _value;	/* required element of type xsd:int */
+	int _direction;	/* required element of type xsd:int */
 public:
-	int soap_type() const { return 32; } /* = unique type id SOAP_TYPE_ns1__ComplexTypeArrayDemo */
-};
-#endif
-
-#ifndef SOAP_TYPE_ns1__SayHelloResponse
-#define SOAP_TYPE_ns1__SayHelloResponse (34)
-/* ns1:SayHelloResponse */
-struct ns1__SayHelloResponse
-{
-public:
-	std::string return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type xsd:string */
-public:
-	int soap_type() const { return 34; } /* = unique type id SOAP_TYPE_ns1__SayHelloResponse */
-};
-#endif
-
-#ifndef SOAP_TYPE_ns1__SayHello
-#define SOAP_TYPE_ns1__SayHello (35)
-/* ns1:SayHello */
-struct ns1__SayHello
-{
-public:
-	std::string name;	/* required element of type xsd:string */
-public:
-	int soap_type() const { return 35; } /* = unique type id SOAP_TYPE_ns1__SayHello */
-};
-#endif
-
-#ifndef SOAP_TYPE_ns1__DemoMethodResponse
-#define SOAP_TYPE_ns1__DemoMethodResponse (36)
-/* ns1:DemoMethodResponse */
-struct ns1__DemoMethodResponse
-{
-public:
-	int soap_type() const { return 36; } /* = unique type id SOAP_TYPE_ns1__DemoMethodResponse */
-};
-#endif
-
-#ifndef SOAP_TYPE_ns1__DemoMethod
-#define SOAP_TYPE_ns1__DemoMethod (39)
-/* ns1:DemoMethod */
-struct ns1__DemoMethod
-{
-public:
-	int soap_type() const { return 39; } /* = unique type id SOAP_TYPE_ns1__DemoMethod */
+	int soap_type() const { return 28; } /* = unique type id SOAP_TYPE_ns1__PlayWord */
 };
 #endif
 
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Header
-#define SOAP_TYPE_SOAP_ENV__Header (40)
+#define SOAP_TYPE_SOAP_ENV__Header (29)
 /* SOAP Header: */
 struct SOAP_ENV__Header
 {
 public:
-	int soap_type() const { return 40; } /* = unique type id SOAP_TYPE_SOAP_ENV__Header */
+	int soap_type() const { return 29; } /* = unique type id SOAP_TYPE_SOAP_ENV__Header */
 };
 #endif
 
@@ -268,7 +189,7 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Code
-#define SOAP_TYPE_SOAP_ENV__Code (41)
+#define SOAP_TYPE_SOAP_ENV__Code (30)
 /* SOAP Fault Code: */
 struct SOAP_ENV__Code
 {
@@ -276,7 +197,7 @@ public:
 	char *SOAP_ENV__Value;	/* optional element of type xsd:QName */
 	struct SOAP_ENV__Code *SOAP_ENV__Subcode;	/* optional element of type SOAP-ENV:Code */
 public:
-	int soap_type() const { return 41; } /* = unique type id SOAP_TYPE_SOAP_ENV__Code */
+	int soap_type() const { return 30; } /* = unique type id SOAP_TYPE_SOAP_ENV__Code */
 };
 #endif
 
@@ -285,7 +206,7 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Detail
-#define SOAP_TYPE_SOAP_ENV__Detail (43)
+#define SOAP_TYPE_SOAP_ENV__Detail (32)
 /* SOAP-ENV:Detail */
 struct SOAP_ENV__Detail
 {
@@ -294,7 +215,7 @@ public:
 	int __type;	/* any type of element <fault> (defined below) */
 	void *fault;	/* transient */
 public:
-	int soap_type() const { return 43; } /* = unique type id SOAP_TYPE_SOAP_ENV__Detail */
+	int soap_type() const { return 32; } /* = unique type id SOAP_TYPE_SOAP_ENV__Detail */
 };
 #endif
 
@@ -303,14 +224,14 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Reason
-#define SOAP_TYPE_SOAP_ENV__Reason (46)
+#define SOAP_TYPE_SOAP_ENV__Reason (35)
 /* SOAP-ENV:Reason */
 struct SOAP_ENV__Reason
 {
 public:
 	char *SOAP_ENV__Text;	/* optional element of type xsd:string */
 public:
-	int soap_type() const { return 46; } /* = unique type id SOAP_TYPE_SOAP_ENV__Reason */
+	int soap_type() const { return 35; } /* = unique type id SOAP_TYPE_SOAP_ENV__Reason */
 };
 #endif
 
@@ -319,7 +240,7 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Fault
-#define SOAP_TYPE_SOAP_ENV__Fault (47)
+#define SOAP_TYPE_SOAP_ENV__Fault (36)
 /* SOAP Fault: */
 struct SOAP_ENV__Fault
 {
@@ -334,7 +255,7 @@ public:
 	char *SOAP_ENV__Role;	/* optional element of type xsd:string */
 	struct SOAP_ENV__Detail *SOAP_ENV__Detail;	/* optional element of type SOAP-ENV:Detail */
 public:
-	int soap_type() const { return 47; } /* = unique type id SOAP_TYPE_SOAP_ENV__Fault */
+	int soap_type() const { return 36; } /* = unique type id SOAP_TYPE_SOAP_ENV__Fault */
 };
 #endif
 
@@ -371,15 +292,13 @@ typedef char *_XML;
 \******************************************************************************/
 
 
-SOAP_FMAC5 int SOAP_FMAC6 ns1__GetComplexType(struct soap*, struct ns1__GetComplexTypeResponse &_param_1);
+SOAP_FMAC5 int SOAP_FMAC6 ns1__AccountAuth(struct soap*, std::string _email, std::string _pass, struct ns1__AccountAuthResponse &_param_1);
 
-SOAP_FMAC5 int SOAP_FMAC6 ns1__PrintComplexType(struct soap*, ns1__ComplexTypeDemo *obj, std::string &return_);
+SOAP_FMAC5 int SOAP_FMAC6 ns1__SendWord(struct soap*, std::string _word_USCOREa, std::string _word_USCOREb, std::string _lang_USCOREa, std::string _lang_USCOREb, struct ns1__SendWordResponse &_param_2);
 
-SOAP_FMAC5 int SOAP_FMAC6 ns1__ComplexTypeArrayDemo(struct soap*, ComplexTypeDemoArray *arr, struct ns1__ComplexTypeArrayDemoResponse &_param_2);
+SOAP_FMAC5 int SOAP_FMAC6 ns1__GetWord(struct soap*, std::string _range, stringArray *_opt, struct ns1__GetWordResponse &_param_3);
 
-SOAP_FMAC5 int SOAP_FMAC6 ns1__SayHello(struct soap*, std::string name, std::string &return_);
-
-SOAP_FMAC5 int SOAP_FMAC6 ns1__DemoMethod(struct soap*, struct ns1__DemoMethodResponse &_param_3);
+SOAP_FMAC5 int SOAP_FMAC6 ns1__PlayWord(struct soap*, int _id, int _value, int _direction, struct ns1__PlayWordResponse &_param_4);
 
 /******************************************************************************\
  *                                                                            *
@@ -391,15 +310,13 @@ extern "C" SOAP_FMAC5 int SOAP_FMAC6 soap_serve(struct soap*);
 
 extern "C" SOAP_FMAC5 int SOAP_FMAC6 soap_serve_request(struct soap*);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__GetComplexType(struct soap*);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__AccountAuth(struct soap*);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__PrintComplexType(struct soap*);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__SendWord(struct soap*);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__ComplexTypeArrayDemo(struct soap*);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__GetWord(struct soap*);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__SayHello(struct soap*);
-
-SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__DemoMethod(struct soap*);
+SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__PlayWord(struct soap*);
 
 /******************************************************************************\
  *                                                                            *
@@ -408,15 +325,13 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__DemoMethod(struct soap*);
 \******************************************************************************/
 
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__GetComplexType(struct soap *soap, const char *soap_endpoint, const char *soap_action, struct ns1__GetComplexTypeResponse &_param_1);
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__AccountAuth(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _email, std::string _pass, struct ns1__AccountAuthResponse &_param_1);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__PrintComplexType(struct soap *soap, const char *soap_endpoint, const char *soap_action, ns1__ComplexTypeDemo *obj, std::string &return_);
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__SendWord(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _word_USCOREa, std::string _word_USCOREb, std::string _lang_USCOREa, std::string _lang_USCOREb, struct ns1__SendWordResponse &_param_2);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__ComplexTypeArrayDemo(struct soap *soap, const char *soap_endpoint, const char *soap_action, ComplexTypeDemoArray *arr, struct ns1__ComplexTypeArrayDemoResponse &_param_2);
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__GetWord(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _range, stringArray *_opt, struct ns1__GetWordResponse &_param_3);
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__SayHello(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string name, std::string &return_);
-
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__DemoMethod(struct soap *soap, const char *soap_endpoint, const char *soap_action, struct ns1__DemoMethodResponse &_param_3);
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__PlayWord(struct soap *soap, const char *soap_endpoint, const char *soap_action, int _id, int _value, int _direction, struct ns1__PlayWordResponse &_param_4);
 
 #endif
 
