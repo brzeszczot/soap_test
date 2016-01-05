@@ -480,3 +480,125 @@ SOAPAction: "http://brzeszczot.net/open/GetWord"
 
 <?xml version="1.0" encoding="UTF-8"?>
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:GetWord><range>ALL</range><opt xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="xsd:string[3]"><item>Ala </item><item>ma </item><item>kota! :)</item></opt></ns1:GetWord></SOAP-ENV:Body></SOAP-ENV:Envelope>
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 527
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/AccountAuth"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:AccountAuth><email>brzeszczot@gmail.com</email><pass>alamakota</pass></ns1:AccountAuth></SOAP-ENV:Body></SOAP-ENV:Envelope>
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 606
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/GetWord"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:GetWord><range>ALL</range><opt xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="xsd:string[3]"><item>Ala </item><item>ma </item><item>kota! :)</item></opt></ns1:GetWord></SOAP-ENV:Body></SOAP-ENV:Envelope>
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 527
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/AccountAuth"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:AccountAuth><email>brzeszczot@gmail.com</email><pass>alamakota</pass></ns1:AccountAuth></SOAP-ENV:Body></SOAP-ENV:Envelope>
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 606
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/GetWord"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:GetWord><range>ALL</range><opt xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="xsd:string[3]"><item>Ala </item><item>ma </item><item>kota! :)</item></opt></ns1:GetWord></SOAP-ENV:Body></SOAP-ENV:Envelope>
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 527
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/AccountAuth"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:AccountAuth><email>brzeszczot@gmail.com</email><pass>alamakota</pass></ns1:AccountAuth></SOAP-ENV:Body></SOAP-ENV:Envelope>
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 606
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/GetWord"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:GetWord><range>ALL</range><opt xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="xsd:string[3]"><item>Ala </item><item>ma </item><item>kota! :)</item></opt></ns1:GetWord></SOAP-ENV:Body></SOAP-ENV:Envelope>
+GET /open/server.php?WSDL HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Connection: close
+Accept-Encoding: gzip, deflate
+
+GET /open/server.php?WSDL HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Connection: close
+Accept-Encoding: gzip, deflate
+
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 574
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/AccountAuth"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:AccountAuth><email>brzeszczot@gmail.com</email><pass>alamakota</pass><proj_id>1</proj_id><proj_hash>hash</proj_hash></ns1:AccountAuth></SOAP-ENV:Body></SOAP-ENV:Envelope>
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 574
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/AccountAuth"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:AccountAuth><email>brzeszczot@gmail.com</email><pass>alamakota</pass><proj_id>1</proj_id><proj_hash>hash</proj_hash></ns1:AccountAuth></SOAP-ENV:Body></SOAP-ENV:Envelope>
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 597
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/AccountAuth"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:AccountAuth><email>brzeszczot@gmail.com</email><pass>alamakota</pass><proj_id>1</proj_id><proj_hash>ffn843Q$m9f4$#T%%$G239jd3h9</proj_hash></ns1:AccountAuth></SOAP-ENV:Body></SOAP-ENV:Envelope>
+POST /open/server.php HTTP/1.1
+Host: brzeszczot.net
+User-Agent: gSOAP/2.8
+Content-Type: text/xml; charset=utf-8
+Content-Length: 597
+Connection: close
+Authorization: Basic ZHVwYTpkdXBh
+SOAPAction: "http://brzeszczot.net/open/AccountAuth"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://brzeszczot.net/open/"><SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><ns1:AccountAuth><email>brzeszczot@gmail.com</email><pass>alamakota</pass><proj_id>1</proj_id><proj_hash>ffn843Q$m9f4$#T%%$G239jd3h9</proj_hash></ns1:AccountAuth></SOAP-ENV:Body></SOAP-ENV:Envelope>

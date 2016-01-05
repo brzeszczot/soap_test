@@ -15,7 +15,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC.cpp ver 2.8.23 2015-11-06 13:32:36 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC.cpp ver 2.8.23 2016-01-05 11:14:58 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -2334,6 +2334,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns1__AccountAuth(struct soap *soap, stru
 	(void)soap; (void)a; /* appease -Wall -Werror */
 	soap_default_std__string(soap, &a->_email);
 	soap_default_std__string(soap, &a->_pass);
+	soap_default_int(soap, &a->_proj_USCOREid);
+	soap_default_std__string(soap, &a->_proj_USCOREhash);
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__AccountAuth(struct soap *soap, const struct ns1__AccountAuth *a)
@@ -2344,6 +2346,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns1__AccountAuth(struct soap *soap, co
 	soap_serialize_std__string(soap, &a->_email);
 	soap_embedded(soap, &a->_pass, SOAP_TYPE_std__string);
 	soap_serialize_std__string(soap, &a->_pass);
+	soap_embedded(soap, &a->_proj_USCOREhash, SOAP_TYPE_std__string);
+	soap_serialize_std__string(soap, &a->_proj_USCOREhash);
 #endif
 }
 
@@ -2356,6 +2360,10 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns1__AccountAuth(struct soap *soap, const cha
 		return soap->error;
 	if (soap_out_std__string(soap, "pass", -1, &a->_pass, ""))
 		return soap->error;
+	if (soap_out_int(soap, "proj_id", -1, &a->_proj_USCOREid, ""))
+		return soap->error;
+	if (soap_out_std__string(soap, "proj_hash", -1, &a->_proj_USCOREhash, ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -2363,6 +2371,8 @@ SOAP_FMAC3 struct ns1__AccountAuth * SOAP_FMAC4 soap_in_ns1__AccountAuth(struct 
 {
 	size_t soap_flag__email = 1;
 	size_t soap_flag__pass = 1;
+	size_t soap_flag__proj_USCOREid = 1;
+	size_t soap_flag__proj_USCOREhash = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
 	a = (struct ns1__AccountAuth *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_ns1__AccountAuth, sizeof(struct ns1__AccountAuth), soap->type, soap->arrayType);
@@ -2383,6 +2393,16 @@ SOAP_FMAC3 struct ns1__AccountAuth * SOAP_FMAC4 soap_in_ns1__AccountAuth(struct 
 				{	soap_flag__pass--;
 					continue;
 				}
+			if (soap_flag__proj_USCOREid && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_int(soap, NULL, &a->_proj_USCOREid, "xsd:int"))
+				{	soap_flag__proj_USCOREid--;
+					continue;
+				}
+			if (soap_flag__proj_USCOREhash && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_in_std__string(soap, NULL, &a->_proj_USCOREhash, "xsd:string"))
+				{	soap_flag__proj_USCOREhash--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -2398,7 +2418,7 @@ SOAP_FMAC3 struct ns1__AccountAuth * SOAP_FMAC4 soap_in_ns1__AccountAuth(struct 
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
-	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag__email > 0 || soap_flag__pass > 0))
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag__email > 0 || soap_flag__pass > 0 || soap_flag__proj_USCOREid > 0 || soap_flag__proj_USCOREhash > 0))
 	{	soap->error = SOAP_OCCURS;
 		return NULL;
 	}

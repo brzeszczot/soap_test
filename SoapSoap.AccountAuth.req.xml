@@ -9,6 +9,8 @@
   <ns1:AccountAuth>
    <email></email>
    <pass></pass>
+   <proj_id>0</proj_id>
+   <proj_hash></proj_hash>
   </ns1:AccountAuth>
  </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>

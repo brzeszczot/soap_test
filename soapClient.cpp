@@ -14,10 +14,10 @@ compiling, linking, and/or using OpenSSL is allowed.
 #endif
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapClient.cpp ver 2.8.23 2015-11-06 13:32:36 GMT")
+SOAP_SOURCE_STAMP("@(#) soapClient.cpp ver 2.8.23 2016-01-05 11:14:58 GMT")
 
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__AccountAuth(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _email, std::string _pass, struct ns1__AccountAuthResponse &_param_1)
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__AccountAuth(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _email, std::string _pass, int _proj_USCOREid, std::string _proj_USCOREhash, struct ns1__AccountAuthResponse &_param_1)
 {	struct ns1__AccountAuth soap_tmp_ns1__AccountAuth;
 	if (soap_endpoint == NULL)
 		soap_endpoint = "http://brzeszczot.net/open/server.php";
@@ -27,6 +27,8 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__AccountAuth(struct soap *soap, const ch
 	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";
 	soap_tmp_ns1__AccountAuth._email = _email;
 	soap_tmp_ns1__AccountAuth._pass = _pass;
+	soap_tmp_ns1__AccountAuth._proj_USCOREid = _proj_USCOREid;
+	soap_tmp_ns1__AccountAuth._proj_USCOREhash = _proj_USCOREhash;
 	soap_serializeheader(soap);
 	soap_serialize_ns1__AccountAuth(soap, &soap_tmp_ns1__AccountAuth);
 	if (soap_begin_count(soap))
