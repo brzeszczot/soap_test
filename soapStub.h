@@ -88,9 +88,10 @@ struct ns1__AccountAuth
 {
 public:
 	std::string _email;	/* required element of type xsd:string */
-	std::string _pass;	/* required element of type xsd:string */
-	int _proj_USCOREid;	/* required element of type xsd:int */
+	std::string _proj;	/* required element of type xsd:string */
+	std::string _timestamp;	/* required element of type xsd:string */
 	std::string _proj_USCOREhash;	/* required element of type xsd:string */
+	std::string _email_USCOREhash;	/* required element of type xsd:string */
 public:
 	int soap_type() const { return 16; } /* = unique type id SOAP_TYPE_ns1__AccountAuth */
 };
@@ -294,7 +295,7 @@ typedef char *_XML;
 \******************************************************************************/
 
 
-SOAP_FMAC5 int SOAP_FMAC6 ns1__AccountAuth(struct soap*, std::string _email, std::string _pass, int _proj_USCOREid, std::string _proj_USCOREhash, struct ns1__AccountAuthResponse &_param_1);
+SOAP_FMAC5 int SOAP_FMAC6 ns1__AccountAuth(struct soap*, std::string _email, std::string _proj, std::string _timestamp, std::string _proj_USCOREhash, std::string _email_USCOREhash, struct ns1__AccountAuthResponse &_param_1);
 
 SOAP_FMAC5 int SOAP_FMAC6 ns1__SendWord(struct soap*, std::string _word_USCOREa, std::string _word_USCOREb, std::string _lang_USCOREa, std::string _lang_USCOREb, struct ns1__SendWordResponse &_param_2);
 
@@ -327,7 +328,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__PlayWord(struct soap*);
 \******************************************************************************/
 
 
-SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__AccountAuth(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _email, std::string _pass, int _proj_USCOREid, std::string _proj_USCOREhash, struct ns1__AccountAuthResponse &_param_1);
+SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__AccountAuth(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _email, std::string _proj, std::string _timestamp, std::string _proj_USCOREhash, std::string _email_USCOREhash, struct ns1__AccountAuthResponse &_param_1);
 
 SOAP_FMAC5 int SOAP_FMAC6 soap_call_ns1__SendWord(struct soap *soap, const char *soap_endpoint, const char *soap_action, std::string _word_USCOREa, std::string _word_USCOREb, std::string _lang_USCOREa, std::string _lang_USCOREb, struct ns1__SendWordResponse &_param_2);
 

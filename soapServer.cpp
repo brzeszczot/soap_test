@@ -14,7 +14,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 #endif
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapServer.cpp ver 2.8.23 2016-01-05 11:14:58 GMT")
+SOAP_SOURCE_STAMP("@(#) soapServer.cpp ver 2.8.23 2016-01-05 13:46:44 GMT")
 
 
 extern "C" SOAP_FMAC5 int SOAP_FMAC6 soap_serve(struct soap *soap)
@@ -79,7 +79,7 @@ SOAP_FMAC5 int SOAP_FMAC6 soap_serve_ns1__AccountAuth(struct soap *soap)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = ns1__AccountAuth(soap, soap_tmp_ns1__AccountAuth._email, soap_tmp_ns1__AccountAuth._pass, soap_tmp_ns1__AccountAuth._proj_USCOREid, soap_tmp_ns1__AccountAuth._proj_USCOREhash, _param_1);
+	soap->error = ns1__AccountAuth(soap, soap_tmp_ns1__AccountAuth._email, soap_tmp_ns1__AccountAuth._proj, soap_tmp_ns1__AccountAuth._timestamp, soap_tmp_ns1__AccountAuth._proj_USCOREhash, soap_tmp_ns1__AccountAuth._email_USCOREhash, _param_1);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/";

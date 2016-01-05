@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <sstream>
+
 #include "soapH.h" // obtain the generated stub
 #include "SoapSoap.nsmap" // obtain the generated XML namespace mapping table for the Quote service
 #include "sha256.hpp"
@@ -22,13 +25,25 @@ int main(int argc, char **argv)
     soap->passwd = passwd;
 
     ns1__AccountAuthResponse output;
+
+    std::string spass("jakishash");
+    std::string spass2("jakishash2");
+
     std::string email("brzeszczot@gmail.com");
-    std::string pass("alamakota");
-    int id = 1;
-    std::string hash("ffn843Q$m9f4$#T%%$G239jd3h9");
+    std::string proj("Test");
+    std::string email_pass("Alamakota");
+    std::string proj_pass("TestPass");
+
+    std::time_t t = std::time(0);
+    std::ostringstream stm ;
+    stm << t;
+
+    std::string timestamp(stm.str());
+    std::string proj_hash(sha256(proj + proj_pass + timestamp + spass));
+    std::string email_hash(sha256(email + email_pass + timestamp + spass2));
 
 //    soap_register_plugin(soap, http_da);
-    if(soap_call_ns1__AccountAuth(soap, NULL, NULL, email, pass, id, hash, output) == SOAP_OK)
+    if(soap_call_ns1__AccountAuth(soap, NULL, NULL, email, proj, timestamp, proj_hash, email_hash, output) == SOAP_OK)
     {
         std::cout << "========================" << std::endl;
             for(int ii = 0; ii < output._return_->__size; ii++)
